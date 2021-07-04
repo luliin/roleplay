@@ -13,6 +13,7 @@ $loginButton.click(() => {
 });
 
 $(function () {
+  console.log(window.location.pathname)
   $logoutButton.hide()
   $("#validate-sign-in").click(() => {
     validateSignIn();
@@ -32,9 +33,10 @@ const signOut = () => {
   $logoutButton.hide()
   sessionStorage.removeItem("user");
   resetNavLinks("");
-  if (window.location.href != "/roleplay-project/index.html") {
-    window.location.href = "/roleplay-project/index.html";
-  }
+  
+  if (window.location.pathname != "/index.html") {
+    window.location.href = "/index.html";
+  } 
 };
 
 function checkIfLoggedIn() {
