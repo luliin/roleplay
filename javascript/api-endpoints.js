@@ -67,3 +67,5 @@ let deleteMove =
 let addMoveInputText = startUrl + "/api/v1/moves/input-text?moveNumber=";
 
 let editCheck = startUrl + "/api/v1/moves/check?checkedNumber=";
+
+let updateCharacter = startUrl + "/api/v1/characters/update-character"

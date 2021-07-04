@@ -5,10 +5,10 @@ $(function () {
 });
 
 const loadPage = () => {
-    checkIfLoggedIn();
-    playgroups = JSON.parse(sessionStorage.getItem("gameMasteredGroups"));
-    renderPlaygroupPage(playgroups);
-}
+  checkIfLoggedIn();
+  playgroups = JSON.parse(sessionStorage.getItem("gameMasteredGroups"));
+  renderPlaygroupPage(playgroups);
+};
 
 const renderPlaygroupPage = (data) => {
   $playgroupOutput.html("");
@@ -62,18 +62,17 @@ const removeGroup = (name) => {
           removePlaygroup + groupToRemove + "&gameMasterEmail=" + user.email
         )
         .then((resp) => {
-            checkIfLoggedIn();
-          swal("Spelgruppen borttagen!", resp.data, "success")
-          .then(()=> {
-              loadPage();
-          })
+          checkIfLoggedIn();
+          swal("Spelgruppen borttagen!", resp.data, "success").then(() => {
+            loadPage();
+          });
         })
         .catch((err) => {
-            if(err.response) {
-                swal("Ett fel uppstod", err.response.data.message, "error")
-            } else {
-                console.log(err);
-            }
+          if (err.response) {
+            swal("Ett fel uppstod", err.response.data.message, "error");
+          } else {
+            console.log(err);
+          }
         });
     }
   });
