@@ -27,11 +27,11 @@ const signOut = () => {
   $logoutButton.hide()
   sessionStorage.removeItem("user");
   resetNavLinks("");
-  consolse.log(window.location.pathname)
+  console.log(window.location.pathname)
   if (window.location.href != "index.html") {
     window.location.href = "index.html";
   } else {
-    consolse.log(window.location.pathname)
+    console.log(window.location.pathname)
   }
 };
 
