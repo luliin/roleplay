@@ -27,8 +27,8 @@ const signOut = () => {
   $logoutButton.hide()
   sessionStorage.removeItem("user");
   resetNavLinks("");
-  if (window.location.href != "/roleplay-project/index.html") {
-    window.location.href = "/roleplay-project/index.html";
+  if (window.location.href != "/index.html") {
+    window.location.href = "/index.html";
   }
 };
 
