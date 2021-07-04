@@ -31,6 +31,7 @@ const signOut = () => {
     window.location.href = "index.html";
   } else {
     consolse.log(window.location.pathname)
+  }
 };
 
 function checkIfLoggedIn() {
