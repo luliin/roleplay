@@ -28,13 +28,10 @@ const signOut = () => {
   $logoutButton.hide()
   sessionStorage.removeItem("user");
   resetNavLinks("");
-  console.log(window.location.pathname)
+  
   if (window.location.pathname != "/index.html") {
     window.location.href = "/index.html";
-  } else {
-    console.log("Ja")
-    console.log(window.location.pathname)
-  }
+  } 
 };
 
 function checkIfLoggedIn() {
