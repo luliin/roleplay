@@ -14,10 +14,12 @@ const renderPlaygroupPage = (data) => {
   $playgroupOutput.html("");
   data.forEach((element, index) => {
     $playgroupOutput.append(`<div class="col text-center"><div class="card  mx-4 mb-3 bg-dark text-success playgroup mb-5" style="">
-        <div class="card-header bg-transparent playgroup light row">
-        <div class="col-11"><h5>${element.name}</h5></div>
-        <div class="col-1"><i class="bi bi-trash-fill remove-group info" id="${index}"></i></div>
-        </div>
+        <div class="card-header bg-transparent playgroup light ">
+        <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8 px-0 "><h5 class="m-0">${element.name}</h5></div>
+        <div class="col-2"><i class="bi bi-trash-fill remove-group info" id="${index}"></i></div>
+        </div></div>
         <div class="card-body text-success">
         </div>
         <div class="card-footer bg-transparent playgroup">
