@@ -29,8 +29,8 @@ const signOut = () => {
   sessionStorage.removeItem("user");
   resetNavLinks("");
   console.log(window.location.pathname)
-  if (window.location.href != "index.html") {
-    window.location.href = "index.html";
+  if (window.location.pathname != "/index.html") {
+    window.location.href = "/index.html";
   } else {
     console.log(window.location.pathname)
   }
