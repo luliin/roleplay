@@ -13,6 +13,7 @@ $loginButton.click(() => {
 });
 
 $(function () {
+  console.log(window.location.pathname)
   $logoutButton.hide()
   $("#validate-sign-in").click(() => {
     validateSignIn();
