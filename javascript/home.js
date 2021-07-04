@@ -19,7 +19,12 @@ $(function () {
   });
   checkIfLoggedIn();
   $logoutButton.click(signOut)
-  
+  $("#sign-in-password").keypress(function (e) {
+    if (e.keyCode == 13) {
+      e.preventDefault();
+      $("#validate-sign-in").click()
+    }
+  });
 });
 
 const signOut = () => {
