@@ -32,6 +32,7 @@ const signOut = () => {
   if (window.location.pathname != "/index.html") {
     window.location.href = "/index.html";
   } else {
+    console.log("Ja")
     console.log(window.location.pathname)
   }
 };
