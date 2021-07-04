@@ -39,7 +39,7 @@ function checkIfLoggedIn() {
     $loginButton.hide();
     $logoutButton.show();
     
-    if (window.location.pathname == "/roleplay-project/index.html") {
+//     if (window.location.pathname == "/roleplay-project/index.html") {
       
 
       $myAccount.html(
@@ -62,28 +62,28 @@ function checkIfLoggedIn() {
           $myGameMasterPage.html("");
         }
       });
-    } else {
-      $myAccount.html(
-        `<a class="nav-link active" aria-current="pages" href="./../pages/user">Mitt konto</a>`
-      );
-      $myPlaygroups.html(
-        `<a class="nav-link active mt-0" aria-current="pages" href="./../pages/user/playgroups.html">Mina spelgrupper</a>`
-      );
-      $myCharacters.html(
-        `<a class="nav-link active mt-0" aria-current="pages" href="./../pages/user/my-characters.html">Mina karaktärer</a>`
-      );
+//     } else {
+//       $myAccount.html(
+//         `<a class="nav-link active" aria-current="pages" href="./../pages/user">Mitt konto</a>`
+//       );
+//       $myPlaygroups.html(
+//         `<a class="nav-link active mt-0" aria-current="pages" href="./../pages/user/playgroups.html">Mina spelgrupper</a>`
+//       );
+//       $myCharacters.html(
+//         `<a class="nav-link active mt-0" aria-current="pages" href="./../pages/user/my-characters.html">Mina karaktärer</a>`
+//       );
 
-      axios.get(getPlaygroupsFromGameMaster + user.email).then((resp) => {
-        sessionStorage.setItem("gameMasteredGroups", JSON.stringify(resp.data));
-        if (resp.data.length > 0) {
-          $myGameMasterPage.html(
-            `<a class="nav-link active mt-0" aria-current="pages" href="./../pages/admin/my-playgroups.html">Spelledarsida</a>`
-          );
-        } else {
-          $myGameMasterPage.html("");
-        }
-      });
-    }
+//       axios.get(getPlaygroupsFromGameMaster + user.email).then((resp) => {
+//         sessionStorage.setItem("gameMasteredGroups", JSON.stringify(resp.data));
+//         if (resp.data.length > 0) {
+//           $myGameMasterPage.html(
+//             `<a class="nav-link active mt-0" aria-current="pages" href="./../pages/admin/my-playgroups.html">Spelledarsida</a>`
+//           );
+//         } else {
+//           $myGameMasterPage.html("");
+//         }
+//       });
+//     }
 } 
  
 
