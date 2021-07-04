@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sköna Rollspelsgänget - Mitt konto</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../styles/styling.css" />
+  </head>
+  <body class="bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../index.html">Sköna Rollspelsgänget</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse d-lg-flex justify-content-lg-end"
+          id="navbarTogglerDemo02"
+        >
+          <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0 ">
+            <li class="nav-item text-end mt-3 my-lg-0 pt-lg-2" id="myAccount"></li>
+            <li class="nav-item text-end my-0 my-lg-0 pt-lg-2" id="myPlaygroups"></li>
+            <li class="nav-item text-end my-0 my-lg-0 pt-lg-2" id="myCharacters"></li>
+            <li class="nav-item text-end my-0 my-lg-0 pt-lg-2" id="gameMasterPage"></li>
+            <li class="nav-item text-end" id="navigation-menu">
+              <button
+                class="nav-item btn btn-outline-dark"
+                type="button"
+                id="loginButton"
+              >
+                Logga in
+              </button>
+              <button
+                class="nav-item btn btn-outline-dark"
+                type="button"
+                id="logoutButton"
+              >
+                Logga ut
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main page -->
+    <div class="container text-center pb-4" id="account-container">
+      <h1 class="my-5">Mitt konto</h1>
+      <div class="row justify-content-md-center">
+      <div
+        class="col col-lg-6 text-start justify-content-md-center pb-5 "
+        id="information"
+      >
+        <div class="col-4"><h5 class="header">Förnamn:</h5></div>
+        <div class="row justify-content-center" id="firstname-row">
+          <div class="col"><h5 class="info" id="firstname"></h5></div>
+          <div class="col-1 me-2">
+            <i class="bi bi-pencil-fill info" id="edit-firstname"></i>
+          </div>
+        </div>
+        <div class="resettable" id="firstname-input">
+          
+        </div>
+
+        <div class="col-4"><h5 class="header">Efternamn:</h5></div>
+        <div class="row" id="lastname-row">
+          <div class="col"><h5 class="info" id="lastname"></h5></div>
+          <div class="col-1 me-2">
+            <i class="bi bi-pencil-fill info" id="edit-lastname"></i>
+          </div>
+        </div>
+        <div class="resettable" id="lastname-input"></div>
+
+        <div class="col-4"><h5 class="header">Användarnamn:</h5></div>
+        <div class="row" id="username-row">
+          <div class="col"><h5 class="info" id="username"></h5></div>
+          <div class="col-1 me-2">
+            <i class="bi bi-pencil-fill info" id="edit-username"></i>
+          </div>
+        </div>
+        <div class="resettable" id="username-input"></div>
+
+        <div class="col-4"><h5 class="header">E-post:</h5></div>
+        <div class="row" id="email-row">
+          <div class="col">
+            <h5 class="info email" id="email"></h5>
+          </div>
+          <div class="col-1 me-2">
+            <i class="bi bi-pencil-fill info" id="edit-email"></i>
+          </div>
+        </div>
+        <div class="resettable" id="confirm-email-input"></div>
+        <div class="resettable" id="email-input"></div>
+         <div class="row" id="password-row">
+        <div class="col mt-2"><h5 class="header">Ändra lösenord:</h5></div>
+       <div class="col-1 me-2 mt-2">
+            <i class="bi bi-pencil-fill info" id="edit-password"></i>
+          </div>
+         </div>
+          
+        </div>
+        <div class="resettable" id="old-password-input"></div>
+        <div class="resettable" id="confirm-password-input"></div>
+        <div class="resettable" id="password-input">
+          
+        
+      </div>
+
+      <div class="container my-5">
+        
+        <div class="row pt-5 justify-content-md-center">
+          <div class="col-lg-6">
+
+            <div class="row">
+              <div class="col ">
+            <button
+              class="btn btn-outline-light"
+              id="reset-button"
+              style="width: 100px"
+            >
+              Återställ
+            </button>
+          </div>
+          <div class="col">
+            <button
+              class="btn btn-outline-light"
+              id="save-changes"
+              style="width: 100px"
+            >
+              Spara
+            </button>
+          </div>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+    </div>
+ </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-dark">
+            <h5 class="modal-title" id="loginLabel">Logga in</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="loginBody">
+            <div class="container my-5">
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="sign-in-email"
+                  placeholder="name@example.com"
+                />
+                <label for="sign-in-email">E-post</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="sign-in-password"
+                  placeholder="Password"
+                />
+                <label for="sign-in-password">Lösenord</label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer text-center" id="loginFooter">
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-dark"
+                data-bs-dismiss="modal"
+              >
+                Nytt konto
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-dark" id="validate-sign-in">
+                Logga in
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="text-center text-lg-start">
+      <!-- Copyright -->
+      <div
+        class="text-center text-dark lead p-3 fw-bold"
+        style="background-color: rgba(0, 0, 0, 0.2)"
+      >
+        ©
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        -
+        <a class="text-dark lead" href="https://github.com/luliin"
+          >Julia Wigenstedt</a
+        >
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="../../javascript/api-endpoints.js"></script>
+    <script src="../../javascript/restrict-access.js"></script>
+    <script src="../../javascript/home.js"></script>
+    <script src="../../javascript/my-account.js"></script>
+  </body>
+</html>

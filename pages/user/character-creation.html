@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rollspelsformulär</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../styles/styling.css" />
+  </head>
+
+  <body class="bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../index.html"
+          >Sköna Rollspelsgänget</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse d-lg-flex justify-content-lg-end"
+          id="navbarTogglerDemo02"
+        >
+          <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0">
+            <li
+              class="nav-item text-end mt-3 my-lg-0 pt-lg-2"
+              id="myAccount"
+            ></li>
+            <li
+              class="nav-item text-end my-0 my-lg-0 pt-lg-2"
+              id="myPlaygroups"
+            ></li>
+            <li
+              class="nav-item text-end my-0 my-lg-0 pt-lg-2"
+              id="myCharacters"
+            ></li>
+            <li class="nav-item text-end" id="navigation-menu">
+              <button
+                class="nav-item btn btn-outline-dark"
+                type="button"
+                id="loginButton"
+              >
+                Logga in
+              </button>
+              <button
+                class="nav-item btn btn-outline-dark"
+                type="button"
+                id="logoutButton"
+              >
+                Logga ut
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <nav>
+      <ul
+        class="nav nav-pills mb-3 justify-content-center"
+        id="pills-tab"
+        role="tablist"
+      >
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link nav-btn active"
+            id="attributes-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#attributes"
+            type="button"
+            role="tab"
+            aria-controls="attributes"
+            aria-selected="true"
+          >
+            Skapa ny karaktär
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="moves-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#moves"
+            type="button"
+            role="tab"
+            aria-controls="moves"
+            aria-selected="false"
+          >
+            Lägg till manövrar
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <!-- Main page -->
+    <div class="container text-center pb-5" id="container">
+      <div class="tab-content mb-5" id="pills-tabContent">
+        <!-- Tab 1 -->
+        <div
+          class="tab-pane fade show active"
+          id="attributes"
+          role="tabpanel"
+          aria-labelledby="attributes-tab"
+        >
+          <div
+            class="row justify-content-center text-start"
+            id="character-output"
+          >
+            <form class="row g-3 light">
+              <div class="col-md-6">
+                <label for="character-name" class="form-label">Namn</label>
+                <input type="text" class="form-control" id="character-name" />
+              </div>
+              <div class="col-md-6">
+                <label for="character-title" class="form-label">Titel</label>
+                <input type="text" class="form-control" id="character-title" />
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-level" class="form-label">Level</label>
+                <select id="character-level" class="form-select">
+                  <option selected value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-hp" class="form-label">Max-KP</label>
+                <input type="number" class="form-control" id="character-hp" />
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-armor" class="form-label">Rustning</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="character-armor"
+                />
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-damage" class="form-label"
+                  >Skada (ex. 6 för T6)</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="character-damage"
+                />
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-strength" class="form-label"
+                  >Styrka</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="character-strength"
+                />
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-dexterity" class="form-label"
+                  >Smidighet</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="character-dexterity"
+                />
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-constitution" class="form-label"
+                  >Fysik</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="character-constitution"
+                />
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-intelligence" class="form-label"
+                  >Intelligens</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="character-intelligence"
+                />
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-wisdom" class="form-label">Visdom</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="character-wisdom"
+                />
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-charisma" class="form-label"
+                  >Karisma</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="character-charisma"
+                />
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-age" class="form-label">Ålder</label>
+                <input type="number" class="form-control" id="character-age" />
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="character-origin" class="form-label"
+                  >Ursprungligen från</label
+                >
+                <input type="text" class="form-control" id="character-origin" />
+              </div>
+              <div class="col-12 col-lg-6">
+                <label for="character-description" class="form-label"
+                  >Bakgrund</label
+                >
+                <textarea
+                  class="form-control"
+                  id="character-description"
+                  rows="4"
+                ></textarea>
+              </div>
+              <div class="col-12 col-lg-6">
+                <label for="character-milestones" class="form-label"
+                  >Milstolpar/Viktiga händelser</label
+                >
+                <textarea
+                  class="form-control"
+                  id="character-milestones"
+                  rows="4"
+                ></textarea>
+              </div>
+              <div class="col-12 mt-4 text-center">
+                <button
+                  type="button"
+                  class="btn playgroup-button light"
+                  style="width: 250px"
+                  id="create-character"
+                >
+                  Skapa karaktär
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 2 -->
+        <div
+          class="tab-pane fade mb-3"
+          id="moves"
+          role="tabpanel"
+          aria-labelledby="moves-tab"
+        >
+          <div class="row justify-content-center text-start" id="move-output">
+            <h1 class="mt-3 text-center">Lägg till manöver</h1>
+            <form class="row g-3 light ">
+              <div class="col-12 col-lg-4">
+                <label for="move-name" class="form-label"
+                  >Namn</label
+                >
+                <div class="input-group">
+                  
+                  <input
+                    class="form-control"
+                    aria-label="With textarea"
+                    id="move-name"
+                  ></input>
+                  <button type="button" class="btn playgroup-button light" id="add-move-name">Lägg till</button>
+                </div>
+              </div>
+              <div class="col-12 col-lg-4">
+                <label for="move-attribute" class="form-label">Attribut</label>
+                <div class="input-group">
+                  
+                   <select id="move-attribute" class="form-select">
+                  <option selected value="">Inget</option>
+                  <option value="(STY)">Styrka</option>
+                  <option value="(SMI)">Smidighet</option>
+                  <option value="(FYS)">Fysik</option>
+                  <option value="(INT)">Intelligens</option>
+                  <option value="(VIS)">Visom</option>
+                  <option value="(KAR)">Karisma</option>
+                </select>
+                  <button type="button" class="btn playgroup-button light" id="add-move-attribute">Lägg till</button>
+                </div>
+               
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="move-activated" class="form-label me-2"
+                  >Aktiverad</label
+                >
+                <select id="move-activated" class="form-select">
+                  <option selected value="1">Ja</option>
+                  <option value="0">Nej</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="move-checkboxes" class="form-label"
+                  >Antal checkboxar</label
+                >
+                <select id="move-checkboxes" class="form-select">
+                  <option selected value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div class="col-12 col-lg-8">
+                <label for="move-description" class="form-label"
+                  >Beskrivning</label
+                >
+                <div class="input-group">
+                  
+                  <textarea
+                    class="form-control"
+                    aria-label="With textarea"
+                    id="move-description"
+                  ></textarea>
+                  <button type="button" class="btn playgroup-button light" id="add-description">Lägg till</button>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6">
+                <label for="move-list-item" class="form-label"
+                  >Lägg till i lista</label
+                >
+                <div class="input-group">
+                  
+                  <input
+                    class="form-control"
+                    aria-label="With textarea"
+                    id="list-item"
+                  ></input>
+                  <button type="button" class="btn playgroup-button light" id="add-list-item">Lägg till</button>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6">
+                <label for="move-dice-throw-text" class="form-label"
+                  >Tärningstext</label
+                >
+                <div class="input-group">
+                  <select name="dice-value" id="dice-value" class="form-select" style="max-width:90px">
+                  <option selected value="10+" class="">10+</option>
+                  <option value="7-9">7-9</option>
+                  <option value="6-">6-</option>
+                  </select>
+                  <input
+                    class="form-control"
+                    aria-label="With textarea"
+                    id="dice-throw-text"
+                  ></input>
+                  <button type="button" class="btn playgroup-button light" id="add-dice-throw-text">Lägg till</button>
+                </div>
+              </div>
+            </form>
+
+            <div class="col-12 text-start mt-5" >
+              <div class="card mx-4 mb-3 bg-dark text-success playgroup mb-5" id="new-move-output">
+                <div class="card-header bg-transparent playgroup text-center">
+                  <h5 class="m-0 light">
+                     <span id="move-name-text"></span>
+                     <span id="move-attribute-text"></span>
+                     <span id="move-activated-text"></span>
+                  </h5>
+                </div>
+               <div class="card-body text-success">
+                 <div class="text-center" id="number-of-checkboxes">
+                 </div>
+                  <h6 class="card-title light small mt-2">
+                    <small id="move-primary-description"
+                      ></small
+                    >
+                  </h6>
+                 </div>
+               <div class="card-footer bg-transparent playgroup light">
+                  
+
+                  <ul class="text-start small list-unstyled ms-3" id="move-dice-throw-text-list">
+                    <!-- <li class="small">10+: </li>
+                    <li class="small">7-9:</li>
+                    <li class="small">6-:</li> -->
+                    
+                  </ul>
+                  <ul class="text-start small" id="move-list-items">
+                    <!-- <li class="small">Nära</li>
+                    <li class="small">Räckvidd</li>
+                    <li class="small">Kastad</li>
+                    <li class="small">Fördel på skadeslag</li>
+                    <li class="small">Ta bort taggen ’farlig’</li> -->
+                  </ul>
+                  <ul class="text-start small list-unstyled ms-3" id="other-description">
+                    
+                  </ul>
+                  
+                </div>
+              </div> 
+            </div>
+            <div class="row justify-content-center">
+            <div class="col">
+              <button type="button" class="btn playgroup-button light" id="undo">
+                Ångra senaste
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn playgroup-button light" id="save-move">
+                Spara manöver
+              </button>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-dark">
+            <h5 class="modal-title" id="loginLabel">Logga in</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="loginBody">
+            <div class="container my-5">
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="sign-in-email"
+                  placeholder="name@example.com"
+                />
+                <label for="sign-in-email">E-post</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="sign-in-password"
+                  placeholder="Password"
+                />
+                <label for="sign-in-password">Lösenord</label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer text-center" id="loginFooter">
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-dark"
+                data-bs-dismiss="modal"
+              >
+                Nytt konto
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-dark" id="validate-sign-in">
+                Logga in
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="text-center text-lg-start" id="my-account-footer">
+      <!-- Copyright -->
+      <div
+        class="text-center text-dark lead p-3 fw-bold"
+        style="background-color: rgba(0, 0, 0, 0.2)"
+      >
+        ©
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        -
+        <a class="text-dark lead" href="https://github.com/luliin"
+          >Julia Wigenstedt</a
+        >
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="../../javascript/api-endpoints.js"></script>
+    <!-- <script src="../../javascript/restrict-access.js"></script> -->
+    <script src="../../javascript/home.js"></script>
+    <script src="../../javascript/create-character.js"></script>
+    <script src="../../javascript/create-move.js"></script>
+    <!-- <script src="../../javascript/character.js"></script> -->
+  </body>
+</html>

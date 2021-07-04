@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rollspelsformulär</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../styles/styling.css" />
+  </head>
+
+  <body class="bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../index.html"
+          >Sköna Rollspelsgänget</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse d-lg-flex justify-content-lg-end"
+          id="navbarTogglerDemo02"
+        >
+          <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0">
+            <li
+              class="nav-item text-end mt-3 my-lg-0 pt-lg-2"
+              id="myAccount"
+            ></li>
+            <li
+              class="nav-item text-end my-0 my-lg-0 pt-lg-2"
+              id="myPlaygroups"
+            ></li>
+            <li
+              class="nav-item text-end my-0 my-lg-0 pt-lg-2"
+              id="myCharacters"
+            ></li>
+            <li class="nav-item text-end" id="navigation-menu">
+              <button
+                class="nav-item btn btn-outline-dark"
+                type="button"
+                id="loginButton"
+              >
+                Logga in
+              </button>
+              <button
+                class="nav-item btn btn-outline-dark"
+                type="button"
+                id="logoutButton"
+              >
+                Logga ut
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <nav>
+      <ul
+        class="nav nav-pills justify-content-center"
+        id="pills-tab"
+        role="tablist"
+      >
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="moves-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#moves"
+            type="button"
+            role="tab"
+            aria-controls="moves"
+            aria-selected="false"
+          >
+            Manövrar
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="gear-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#gear"
+            type="button"
+            role="tab"
+            aria-controls="gear"
+            aria-selected="false"
+          >
+            Utrustning
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="about-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#about"
+            type="button"
+            role="tab"
+            aria-controls="about"
+            aria-selected="false"
+          >
+            Om <span id="char-name">Rhonda Röd</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="all-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#all"
+            type="button"
+            role="tab"
+            aria-controls="all"
+            aria-selected="false"
+          >
+            Visa alla karaktärer
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="create-moves-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#create-moves"
+            type="button"
+            role="tab"
+            aria-controls="create-moves"
+            aria-selected="false"
+          >
+            Lägg till manöver
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link nav-btn active"
+            id="attributes-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#attributes"
+            type="button"
+            role="tab"
+            aria-controls="attributes"
+            aria-selected="true"
+          >
+            Grundegenskaper
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <!-- Main page -->
+    <div class="container text-center" id="character-container">
+      <div class="tab-content" id="pills-tabContent">
+        <!-- Tab 1 -->
+        <div
+          class="tab-pane fade show active"
+          id="attributes"
+          role="tabpanel"
+          aria-labelledby="attributes-tab"
+        >
+          <div
+            class="row justify-content-center text-center"
+            id="character-output"
+          >
+            <h1 class="mt-1" id="name"></h1>
+            <h6 class="info" id="title"></h6>
+            <div class="row my-2">
+              <div class="col">
+                <div class="level">
+                  <h6 class="header mt-2">Level:</h6>
+                  <div class="row">
+                    <div class="exp-container">
+                      <div class="col text-center" id="level-container">
+                        <h5
+                          class="text-center quantity light py-1"
+                          id="level-2"
+                        ></h5>
+                      </div>
+                      <div
+                        class="row justify-content-center text-center"
+                        id="level-up-container"
+                      >
+                        <div class="col-6 col-sm-4 col-xl-3 text-center">
+                          <h5
+                            class="text-end quantity light py-1"
+                            id="level"
+                          ></h5>
+                        </div>
+
+                        <div class="col-3 p-0 text-start">
+                          <i
+                            class="bi bi-arrow-up-circle increase-button info"
+                            id="level-up"
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="level">
+                  <h6 class="header mt-2">Erf:</h6>
+
+                  <div class="exp-container">
+                    <div class="row justify-content-center text-center">
+                      <div class="col-3 text-end p-0">
+                        <i
+                          class="bi bi-dash-circle decrease-button info"
+                          id="lose-xp"
+                        ></i>
+                      </div>
+                      <div class="col-3 text-center">
+                        <h5
+                          class="text-center quantity light py-1"
+                          id="xp"
+                        ></h5>
+                      </div>
+
+                      <div class="col-3 p-0 text-start">
+                        <i
+                          class="bi bi-plus-circle increase-button info"
+                          id="gain-xp"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="outer col-1 d-flex flex-column hp-adjust">
+                <i
+                  class="bi bi-plus-circle decrease-button info"
+                  id="hp-plus"
+                ></i>
+                <i
+                  class="bi bi-dash-circle decrease-button info"
+                  id="hp-minus"
+                ></i>
+              </div>
+              <div class="outer col-3 d-flex flex-column hp-container">
+                <div class="light">KP</div>
+
+                <div class="heart text-center pt-3">
+                  <h2 class="black fw-bold" style="z-index: 1" id="hp">
+                    <span id="currentHP"></span>/<span id="maxHP"></span>
+                  </h2>
+                </div>
+              </div>
+
+              <div class="outer col-4 d-flex flex-column">
+                <div class="light ps-1">Rustning</div>
+                <div class="shield pt-3 light">
+                  <h1 class="black fw-bold mt-1" id="armor"></h1>
+                </div>
+              </div>
+              <div class="outer col-4 d-flex flex-column">
+                <div class="light ps-1">Skada</div>
+
+                <div class="area diamond-shape">
+                  <h1 class="black fw-bold item-count mt-2" id="damage"></h1>
+                </div>
+                <!-- .container .diamond-shape-->
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="outer col-4">
+                <div class="light">Styrka</div>
+                <div class="attribute corners corners--round">
+
+                  <div class="wrapper">
+                  <h1 class="black mt-4 fw-bold" id="strength"></h1>
+                  <div class="higher">
+                    <input class="higher" type="checkbox" name="" id="weak" />
+                    <label for="weak">Svag</label>
+                  </div></div>
+                  <p class="scooped"></p>
+                </div>
+              </div>
+              <div class="outer col-4">
+                <div class="light">Smidighet</div>
+                <div class="attribute corners corners--round">
+                  <div class="wrapper">
+                  <h1 class="black mt-4 fw-bold" id="dexterity"></h1>
+                  <div class="higher">
+                    <input type="checkbox" name="" id="shaky" />
+                    <label for="shaky">Skakig</label>
+                  </div></div>
+                  <p class="scooped"></p>
+                </div>
+              </div>
+              <div class="outer col-4">
+                <div class="light">Fysik</div>
+                <div class="attribute corners corners--round">
+                  <div class="wrapper">
+                  <h1 class="black mt-4 fw-bold" id="constitution">+1</h1>
+                  <div class="higher">
+                    <input type="checkbox" name="" id="sick" />
+                    <label for="sick">Sjuk</label>
+                  </div></div>
+                  <p class="scooped"></p>
+                </div>
+              </div>
+              <div class="outer col-4">
+                <div class="light">Intelligens</div>
+                <div class="attribute corners corners--round">
+                  <div class="wrapper">
+                  <h1 class="black mt-4 fw-bold" id="intelligence">+1</h1>
+                  <div class="higher">
+                    <input type="checkbox" name="" id="stunned" />
+                    <label for="stunned">Chockad</label>
+                  </div></div>
+                  <p class="scooped"></p>
+                </div>
+              </div>
+              <div class="outer col-4">
+                <div class="light">Visdom</div>
+                <div class="attribute corners corners--round">
+                  <div class="wrapper">
+                  <h1 class="black mt-4 fw-bold" id="wisdom">+1</h1>
+                  <div class="higher">
+                    <input type="checkbox" name="" id="confused" />
+                    <label for="confused">Förvirrad</label>
+                  </div></div>
+                  <p class="scooped"></p>
+                </div>
+              </div>
+              <div class="outer col-4">
+                <div class="light">Karisma</div>
+                <div class="attribute corners corners--round">
+                  <div class="wrapper">
+                  <h1 class="black mt-4 fw-bold" id="charisma">+1</h1>
+                  <div class="higher">
+                    <input type="checkbox" name="" id="scarred" />
+                    <label for="scarred">Ärrad</label>
+                  </div></div>
+                  <p class="scooped"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tab 2 -->
+        <div
+          class="tab-pane fade"
+          id="moves"
+          role="tabpanel"
+          aria-labelledby="moves-tab"
+        >
+          <div class="row justify-content-center text-center">
+            <button
+              type="button"
+              class="col-5 btn playgroup-button mt-3"
+              id="show-all"
+            >
+              Visa alla
+            </button>
+            <h1 class="my-3">Manövrar</h1>
+
+            <div class="col text-start" id="move-output">
+              <!-- <div class="card mx-4 mb-3 bg-dark text-success playgroup mb-5">
+                <div class="card-header bg-transparent playgroup text-center">
+                  <h5 class="m-0 light" id="move-name">
+                    Eld... själ! <span id="move-attribute">(FYS)</span>
+                  </h5>
+                </div>
+                <div class="card-body text-success">
+                  <h6 class="card-title light small">
+                    <small
+                      >När du frammanar ett vapen av ren eld, beskriv dess form
+                      och slå +FYS. Vapnet börjar alltid med taggarna eldigt,
+                      hand och farligt. På 10+, välj ytterligare två taggar. På
+                      7-9, välj ytterligare en tag.</small
+                    >
+                  </h6>
+                </div>
+                <div class="card-footer bg-transparent playgroup light">
+                  <ul class="text-start small">
+                    <li class="small">Nära</li>
+                    <li class="small">Räckvidd</li>
+                    <li class="small">Kastad</li>
+                    <li class="small">Fördel på skadeslag</li>
+                    <li class="small">Ta bort taggen ’farlig’</li>
+                  </ul>
+                  <h6 class="small">
+                    <small>
+                      På 6-, så får du ditt vapen men det får taggen hungrig.
+                      Mata det, eller möt konsekvenserna</small
+                    >
+                  </h6>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 5 -->
+        <div
+          class="tab-pane fade"
+          id="all"
+          role="tabpanel"
+          aria-labelledby="all-tab"
+        >
+          <div class="row justify-content-center text-center">
+            
+            <h1 class="my-3">Välj karaktär</h1>
+
+            <div class="col text-start" id="all-output">
+              
+            </div>
+          </div>
+        </div>
+        <!-- Tab 3 -->
+        <div
+          class="tab-pane fade"
+          id="gear"
+          role="tabpanel"
+          aria-labelledby="gear-tab"
+        >
+          <div class="row justify-content-center text-center">
+            <h1 class="mt-3">Utrustning</h1>
+            <div class="col-12">
+              <button type="button" class="btn playgroup-button" id="new-item">
+                Lägg till utrustning
+              </button>
+            </div>
+
+            <div id="add-item" class="text-start mt-3 light">
+              <h6 class="text-center pt-3">Lägg till utrustning</h6>
+              <form>
+                <div class="mb-3">
+                  <label for="item-name-input" class="form-label">Namn</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="item-name-input"
+                  />
+                </div>
+                <div class="row">
+                  <div class="col mb-3">
+                    <label for="item-quantity-input" class="form-label"
+                      >Antal</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="item-quantity-input"
+                    />
+                  </div>
+                  <div class="col mb-3">
+                    <label for="item-weight-input" class="form-label"
+                      >Vikt</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="item-weight-input"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="new-item-description" class="form-label"
+                    >Beskrivning</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="new-item-description"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="col text-center mt-4">
+                  <button
+                    type="button"
+                    class="btn playgroup-button"
+                    id="save-new-item"
+                  >
+                    Spara utrustning
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="col light mt-3">
+              <div class="level">
+                <h5 class="mt-3">Äventyrsutrustning</h5>
+
+                <div class="exp-container">
+                  <div class="row justify-content-center text-center">
+                    <div class="col-3 text-end p-0">
+                      <i
+                        class="bi bi-dash-circle decrease-button info"
+                        id="lose-gear"
+                      ></i>
+                    </div>
+                    <div class="col-3 text-center">
+                      <h5
+                        class="text-center quantity light py-1"
+                        id="gear-number"
+                      ></h5>
+                    </div>
+
+                    <div class="col-3 p-0 text-start">
+                      <i
+                        class="bi bi-plus-circle increase-button info"
+                        id="gain-gear"
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="gear-output" class="mb-5">
+                <!-- <div class="level mt-4">
+                  <div class="row mx-1">
+                    <div class="col-8 mt-3 text-start">
+                      <h6>
+                        <span id="item-qty">1</span> x
+                        <span id="item-name">Magiskt kortsvärd</span>
+                      </h6>
+                    </div>
+                    <div class="col mt-3 text-end">
+                      <h6>Vikt: <span id="item-weight">1</span> BP</h6>
+                    </div>
+                    <div class="col-12 text-start mb-3" id="item-description">
+                      Beskrivning skrivs in här
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+              <div class="mb-5" id="armor-container">
+                <div class="level">
+                  <h5 class="mt-3">Rustning</h5>
+
+                  <div class="exp-container">
+                    <div class="row justify-content-center text-center">
+                      <div class="col-3 text-end p-0">
+                        <i
+                          class="bi bi-dash-circle decrease-button info"
+                          id="lose-armor"
+                        ></i>
+                      </div>
+                      <div class="col-3 text-center">
+                        <h5
+                          class="text-center quantity light py-1"
+                          id="armor-number"
+                        ></h5>
+                      </div>
+
+                      <div class="col-3 p-0 text-start">
+                        <i
+                          class="bi bi-plus-circle increase-button info"
+                          id="gain-armor"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 6 -->
+        <div
+          class="tab-pane fade mb-3"
+          id="create-moves"
+          role="tabpanel"
+          aria-labelledby="create-moves-tab"
+        >
+          <div class="row justify-content-center text-start" id="move-output">
+            <h1 class="mt-3 text-center">Lägg till manöver</h1>
+            <form class="row g-3 light ">
+              <div class="col-12 col-lg-4">
+                <label for="move-name" class="form-label"
+                  >Namn</label
+                >
+                <div class="input-group">
+                  
+                  <input
+                    class="form-control"
+                    aria-label="With textarea"
+                    id="move-name"
+                  ></input>
+                  <button type="button" class="btn playgroup-button light" id="add-move-name">Lägg till</button>
+                </div>
+              </div>
+              <div class="col-12 col-lg-4">
+                <label for="move-attribute" class="form-label">Attribut</label>
+                <div class="input-group">
+                  
+                   <select id="move-attribute" class="form-select">
+                  <option selected value="">Inget</option>
+                  <option value="(STY)">Styrka</option>
+                  <option value="(SMI)">Smidighet</option>
+                  <option value="(FYS)">Fysik</option>
+                  <option value="(INT)">Intelligens</option>
+                  <option value="(VIS)">Visom</option>
+                  <option value="(KAR)">Karisma</option>
+                </select>
+                  <button type="button" class="btn playgroup-button light" id="add-move-attribute">Lägg till</button>
+                </div>
+               
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="move-activated" class="form-label me-2"
+                  >Aktiverad</label
+                >
+                <select id="move-activated" class="form-select">
+                  <option selected value="1">Ja</option>
+                  <option value="0">Nej</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="move-checkboxes" class="form-label"
+                  >Antal checkboxar</label
+                >
+                <select id="move-checkboxes" class="form-select">
+                  <option selected value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div class="col-12 col-lg-8">
+                <label for="move-description" class="form-label"
+                  >Beskrivning</label
+                >
+                <div class="input-group">
+                  
+                  <textarea
+                    class="form-control"
+                    aria-label="With textarea"
+                    id="move-description"
+                  ></textarea>
+                  <button type="button" class="btn playgroup-button light" id="add-description">Lägg till</button>
+                </div>
+              </div>
+              <div class="col-12 col-lg-4">
+                <label for="move-list-item" class="form-label"
+                  >Lägg till i lista</label
+                >
+                <div class="input-group">
+                  
+                  <input
+                    class="form-control"
+                    aria-label="With textarea"
+                    id="list-item"
+                  ></input>
+                  <button type="button" class="btn playgroup-button light" id="add-list-item">Lägg till</button>
+                </div>
+              </div>
+              <div class="col-12 col-lg-4">
+                <label for="move-dice-throw-text" class="form-label"
+                  >Tärningstext</label
+                >
+                <div class="input-group">
+                  <select name="dice-value" id="dice-value" class="form-select" style="max-width:90px">
+                  <option selected value="10+" class="">10+</option>
+                  <option value="7-9">7-9</option>
+                  <option value="6-">6-</option>
+                  </select>
+                  <input
+                    class="form-control"
+                    aria-label="With textarea"
+                    id="dice-throw-text"
+                  ></input>
+                  <button type="button" class="btn playgroup-button light" id="add-dice-throw-text">Lägg till</button>
+                </div>
+                
+              </div>
+              <div class="col-6 col-lg-4">
+                <label for="move-inputfields" class="form-label"
+                  >Antal inputfält</label
+                >
+                <select id="move-inputfields" class="form-select">
+                  <option selected value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+            </form>
+
+            <div class="col-12 text-start mt-5" >
+              <div class="card mx-4 mb-3 bg-dark text-success playgroup mb-5" id="new-move-output">
+                <div class="card-header bg-transparent playgroup text-center">
+                  <h5 class="m-0 light">
+                     <span id="move-name-text"></span>
+                     <span id="move-attribute-text"></span>
+                     <span id="move-activated-text"></span>
+                  </h5>
+                </div>
+               <div class="card-body text-success">
+                 <div class="text-center" id="number-of-checkboxes">
+                 </div>
+                  <h6 class="card-title light small mt-2">
+                    <small id="move-primary-description"
+                      ></small
+                    >
+                  </h6>
+                 </div>
+               <div class="card-footer bg-transparent playgroup light">
+                  
+
+                  <ul class="text-start small list-unstyled ms-3" id="move-dice-throw-text-list">
+                    <!-- <li class="small">10+: </li>
+                    <li class="small">7-9:</li>
+                    <li class="small">6-:</li> -->
+                    
+                  </ul>
+                  <ul class="text-start small" id="move-list-items">
+                    <!-- <li class="small">Nära</li>
+                    <li class="small">Räckvidd</li>
+                    <li class="small">Kastad</li>
+                    <li class="small">Fördel på skadeslag</li>
+                    <li class="small">Ta bort taggen ’farlig’</li> -->
+                  </ul>
+                  <ul class="text-start small list-unstyled ms-3" id="input-fields-list">
+                    
+                  </ul>
+                  <ul class="text-start small list-unstyled ms-3" id="other-description">
+                    
+                  </ul>
+                  
+                </div>
+              </div> 
+            </div>
+            <div class="row justify-content-center">
+            <div class="col">
+              <button type="button" class="btn playgroup-button light" id="undo">
+                Ångra senaste
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn playgroup-button light" id="save-character-move">
+                Spara manöver
+              </button>
+            </div></div>
+          </div>
+        </div>
+
+        <!-- Tab 4 -->
+        <div
+          class="tab-pane fade"
+          id="about"
+          role="tabpanel"
+          aria-labelledby="about-tab"
+        >
+          <div class="row justify-content-center text-center light">
+            <h1 class="my-3" id="about-title">Om Rhonda Röd</h1>
+            <div class="col text-start mt-3" id="show-info">
+              <div class="row">
+                <h5 class="my-3">Namn: <span id="name-character"></span></h5>
+                <div class="col-6">
+                  <h5 class="my-3">Ålder: <span id="age-character"></span></h5>
+                  </div>
+                
+                  <div class="col">
+                <h5 class="my-3">Ras: <span id="race-character"></span></h5>
+                </div>
+              
+              <h5 class="my-3">Från: <span id="origin-character"></span></h5>
+              
+           
+              <h5 class="my-3">Titel: <span id="title-character"></span></h5>
+            
+              <h5 class="my-3">Bakgrund</h5>
+              <div class="col text-start  small" id="about-character"></div>
+              <h5 class="my-3">Milstolpar</h5>
+              <div
+                class="col text-start  small"
+                id="character-milestones"
+              ></div>
+              <div class="text-center"><button type="button" class="btn playgroup-button mt-5" id="edit-character-info">Ändra information</button></div>
+            </div>
+            </div>
+            <div class="col-12 text-start mt-3 mb-5" id="edit-info">
+              <form>
+                <div class="row">
+                  <div class="mb-3 col-9">
+                  <label for="edit-age" class="form-label">Namn</label>
+                  <input type="text" class="form-control" id="edit-name" />
+                </div>
+                <div class="mb-3 col-3">
+                  <label for="edit-age" class="form-label">Ålder</label>
+                  <input type="number" class="form-control" id="edit-age" />
+                </div>
+                <div class="mb-3 col">
+                  <label for="edit-age" class="form-label">Ras</label>
+                  <input type="text" class="form-control" id="edit-race" />
+                </div>
+                <div class="mb-3 col">
+                  <label for="edit-age" class="form-label">Från</label>
+                  <input type="text" class="form-control" id="edit-origin" />
+                </div>
+              </div>
+              <div class="mb-3">
+                  <label for="edit-age" class="form-label">Titel</label>
+                  <input type="text" class="form-control" id="edit-title" />
+                </div>
+                <div class="mb-3">
+                  <label for="edit-background" class="form-label"
+                    >Bakgrund</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="edit-background"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="edit-milestones" class="form-label"
+                    >Milstolpar</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="edit-milestones"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="text-center">
+                  <button
+                    type="button"
+                    class="btn playgroup-button"
+                    id="update-info"
+                  >
+                    Uppdatera
+                  </button>
+                </div>
+              </form>
+            </div>
+           
+          </div>
+        </div>
+
+        <!-- <div class="attribute corners corners--round">
+                <h6 class="black mt-4">Smidighet</h6> <span class="black">+1</span>
+                <p class="scooped"></p>
+            </div>
+            <div class="attribute corners corners--round">
+                <h6 class="black mt-4">Fysik</h6> <span class="black">+1</span>
+                <p class="scooped"></p>
+            </div>
+            <div class="attribute corners corners--round">
+                <h6 class="black mt-4">Visdom</h6> <span class="black">+1</span>
+                <p class="scooped"></p>
+            </div>
+            <div class="attribute corners corners--round">
+                <h6 class="black mt-4 ">Intelligens</h6> <span class="black">+1</span>
+                <p class="scooped"></p>
+            </div>
+            <div class="attribute corners corners--round">
+                <h6 class="black mt-4">Karisma</h6> <span class="black">+1</span>
+                <p class="scooped"></p>
+            </div> -->
+      </div>
+    </div>
+
+    <!-- Level up-modal -->
+    <div
+      class="modal fade"
+      id="levelUpModal"
+      tabindex="-1"
+      aria-labelledby="levelUpModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-dark">
+            <h5 class="modal-title" id="loginLabel">Levla upp</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="loginBody">
+            <div class="container my-3">
+              Dags att levla upp! <br />Välj om du vill öka en grundegenskap
+              eller få tillgång till en ny manöver.
+            </div>
+          </div>
+          <div class="modal-footer text-center" id="loginFooter">
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-dark"
+                id="increase-attribute"
+              >
+                Öka egenskap
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-dark" id="get-new-move">
+                Ny manöver
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Öka grundegenskap-modal -->
+    <div
+      class="modal fade"
+      id="increaseAttributeModal"
+      tabindex="-1"
+      aria-labelledby="increaseAttributeModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-dark">
+            <h5 class="modal-title" id="loginLabel">Öka grundegenskap</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="loginBody">
+            <div class="container my-3">
+              För att öka en grundegenskap, välj vilken och klicka sedan på
+              Bekräfta. <br />
+              Du får bara höja en grundegenskap till 3, och det krävs två level
+              up för att få göra det.
+              <div class="row mt-3 text-center">
+                <div class="col-6">
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark"
+                    style="width: 115px"
+                    id="increase-strength"
+                  >
+                    Styrka
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark"
+                    style="width: 115px"
+                    id="increase-dexterity"
+                  >
+                    Smidighet
+                  </button>
+                </div>
+                <div class="col">
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark"
+                    style="width: 115px"
+                    id="increase-constitution"
+                  >
+                    Fysik
+                  </button>
+                </div>
+                <div class="col">
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark"
+                    style="width: 115px"
+                    id="increase-intelligence"
+                  >
+                    Intelligens
+                  </button>
+                </div>
+                <div class="col">
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark"
+                    style="width: 115px"
+                    id="increase-wisdom"
+                  >
+                    Visdom
+                  </button>
+                </div>
+                <div class="col">
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark"
+                    style="width: 115px"
+                    id="increase-charisma"
+                  >
+                    Karisma <span id="charisma-now"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer text-center" id="loginFooter">
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-dark return-to-level-up"
+              >
+                Tillbaka
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-dark" id="get-new-move">
+                Bekräfta
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Öka grundegenskap-modal -->
+    <div
+      class="modal fade"
+      id="getNewMove"
+      tabindex="-1"
+      aria-labelledby="getNewMoveLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header bg-dark">
+            <h5 class="modal-title" id="loginLabel">Ny manöver</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="loginBody">
+            <div class="container my-3">
+              Nedan ser du en lista över dina inaktiva manövrar. <br />
+              Välj en och klicka sedan på Bekräfta.
+              <div class="row mt-3 text-center" id="new-move-output-2"></div>
+            </div>
+          </div>
+          <div class="modal-footer text-center" id="loginFooter">
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-dark return-to-level-up"
+              >
+                Tillbaka
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-dark" id="get-new-move">
+                Bekräfta
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-dark">
+            <h5 class="modal-title" id="loginLabel">Logga in</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="loginBody">
+            <div class="container my-5">
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="sign-in-email"
+                  placeholder="name@example.com"
+                />
+                <label for="sign-in-email">E-post</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="sign-in-password"
+                  placeholder="Password"
+                />
+                <label for="sign-in-password">Lösenord</label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer text-center" id="loginFooter">
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-dark"
+                data-bs-dismiss="modal"
+              >
+                Nytt konto
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-dark" id="validate-sign-in">
+                Logga in
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="text-center text-lg-start" id="my-account-footer">
+      <!-- Copyright -->
+      <div
+        class="text-center text-dark lead p-3 fw-bold"
+        style="background-color: rgba(0, 0, 0, 0.2)"
+      >
+        ©
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        -
+        <a class="text-dark lead" href="https://github.com/luliin"
+          >Julia Wigenstedt</a
+        >
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="../../javascript/api-endpoints.js"></script>
+    <script src="../../javascript/restrict-access.js"></script>
+    <script src="../../javascript/home.js"></script>
+    <script src="../../javascript/playgroup-characters.js"></script>
+    
+    <script src="../../javascript/character.js"></script>
+    <script src="../../javascript/show-moves.js"></script>
+    <script src="../../javascript/show-items.js"></script>
+    <script src="../../javascript/create-move.js"></script>
+  </body>
+</html>

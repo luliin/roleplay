@@ -1,0 +1,346 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap");
+
+:root {
+  --primary: #ac9d79;
+  --secondary: #316d63a1;
+  --ternary: #316d63;
+  --dark: #212529;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+footer {
+  background: var(--secondary);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#my-account-footer {
+  position: relative;
+}
+
+#container {
+  min-height: 79vh;
+}
+#character-container {
+  min-height: 83.1vh;
+}
+h1 {
+  color: var(--primary);
+}
+
+nav {
+  background: var(--secondary);
+}
+
+img {
+  max-width: 100%;
+}
+
+#loginLabel {
+  color: var(--ternary);
+}
+
+#loginBody {
+  background: var(--secondary);
+  margin-top: 0;
+  padding-top: 0;
+}
+
+#loginFooter {
+  background: var(--ternary);
+  justify-content: center;
+}
+
+#loginFooter .btn {
+  width: 100%;
+}
+
+.header {
+  color: var(--ternary);
+}
+
+.info {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.map {
+  border-radius: 1em;
+  border: solid 2px var(--primary);
+}
+
+.edit {
+  font-size: 0.7rem;
+}
+
+.email {
+  font-size: 0.9rem;
+  margin-top: 3px;
+}
+
+#save-changes, #reset-button, .playgroup-button {
+  border-color: var(--ternary);
+  color: var(--ternary);
+}
+
+#save-changes:hover, #reset-button:hover, .playgroup-button:hover {
+  color: var(--primary)
+}
+
+.dark-playgroup-button:hover {
+   color: var(--dark)
+}
+
+
+#save-changes:focus, #reset-button:focus, .playgroup-button:focus {
+  border-color: var(--ternary);
+  background: var(--ternary);
+  color: #000;
+}
+
+.input-button {
+  border-color: var(--ternary);
+  color: var(--ternary);
+}
+
+.input-button:focus {
+  border-color: var(--ternary);
+  background: var(--ternary);
+  color: #000;
+}
+
+.playgroup {
+  border-color: var(--secondary);
+  color: var(--ternary);
+}
+
+.light {
+  color: var(--primary)
+}
+
+/* .attribute {
+  
+    position:relative; 
+    width: 100px;
+    height: 100px;
+    background: var(--ternary);
+    border: solid 2px var(--ternary);
+    overflow: hidden;
+    
+} */
+
+.attribute {
+  max-width: 105px;
+  max-height: 100px;
+  margin: .2rem auto;
+  margin-bottom: .5rem;
+  background-color: var(--ternary);
+  padding: 1 0rem;
+  position: relative;
+  border:  1px solid #212529;
+}
+
+.attribute:before,
+.attribute:after,
+.scooped:before,
+.scooped:after {
+  content: "";
+  display: block;
+  width: 1.5rem;
+  height: 1.6rem;
+  background-color:#212529;
+  position: absolute;
+}
+
+.attribute:before {
+  top: 0;
+  left: 0;
+  border-bottom-right-radius: 100%;
+  box-shadow: 5px 1px var(--primary);
+}
+.attribute:after {
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 100%;
+  box-shadow: -1px -5px var(--primary);
+}
+p {
+  /* position: relative; */
+  padding: 0.3rem;
+  font-size: 1.1rem;
+  line-height: 1.35;
+  color: var(--primary);
+}
+p:before {
+  top: 0;
+  right: 0;
+  border-bottom-left-radius: 100%;
+  box-shadow: -5px 1px var(--primary);
+}
+p:after {
+  bottom: 0;
+  left: 0;
+  border-top-right-radius: 100%;
+  box-shadow: 1px -5px var(--primary);
+}
+
+.smaller, .smaller ul {
+  height: 1em;
+  margin-bottom: 1em;
+}
+
+.increase-button, .decrease-button {
+  font-size: 1.4em;
+}
+
+.dark {
+  color: var(--dark);
+}
+
+.black {
+  color: black;
+}
+
+.shield {
+  height: 5em;
+  width: 5em;
+  background: var(--ternary);
+  border: 3px solid var(--primary);
+  border-radius: 50% 50% 50% 50% / 12% 12% 88% 88%;
+}
+
+.outer {
+  margin:0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart { 
+  position: relative; 
+  width: 100px; 
+  height: 5em; 
+} 
+
+.heart:before, .heart:after { 
+  position: absolute; 
+  content: ""; 
+  left: 50px; 
+  top: 0; 
+  width: 50px; 
+  height: 80px; 
+  background: var(--ternary);
+  color: var(--dark);
+  border-top: 4px solid var(--primary);
+  border-right: 4px solid var(--primary);
+  border-bottom: 4px solid var(--primary);
+  border-radius: 50px 50px 0 0; 
+  transform: rotate(-45deg); 
+  transform-origin: 0 100%; 
+  z-index: -1;
+} 
+
+.heart:after { 
+  left: 0; 
+  transform: rotate(45deg); 
+  transform-origin :100% 100%; 
+  z-index: -1;
+}
+
+.heart:before { 
+  border-left: 4px solid var(--primary);
+  border-right: transparent;
+}
+
+.level {
+  border-radius: 5em;
+  border: 2px solid var(--ternary)
+}
+
+.area {
+  margin: auto;
+  text-align: center; 
+  width: 940px;
+}
+
+.diamond-shape {
+  background: var(--ternary);
+  height: 3.5em;
+  text-align: center;
+  transform: rotate(45deg);
+	width: 3.5em;
+   border: 3px solid var(--primary)
+}
+
+.item-count {
+  transform: rotate(-45deg);
+  vertical-align: middle;
+	/* width:60px; */
+ 
+}
+
+.nav-btn {
+ 
+  color: var(--primary);
+  
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link { 
+  background-color: var(--dark);
+  color: var(--primary);
+  
+}
+
+.nav-pills .nav-link {
+  color: var(--black);
+  padding-top:.5rem;
+  padding-bottom:.5rem;
+  padding-left:.5rem;
+  padding-right:.5rem;
+  /* border: solid 1px var(--dark); */
+  /* font-weight: bold; */
+}
+
+nav .nav-link {
+  padding-top: 0;
+}
+
+.higher {
+  margin-top: -.9em !important;
+}
+
+.hp-adjust {
+  
+  margin-left: -.3em;
+  
+}
+.hp-container {
+  margin-left: .3em;
+}
+
+.swal-footer {
+  text-align: center;
+}
+
+/* .attribute:after {
+  
+  content: "";
+  position:absolute;
+  margin:-20px;
+  margin-left:-100%;
+  width:40px;
+  height:40px;
+  border-radius: 50%;
+  border: solid 2px var(--ternary);
+  background-color:#212529; /* to see where it is */
+/* } */
+/*  */
+@media(min-width:500px) {
+  .wrapper {
+    margin-top: -1em !important;
+  }
+}
