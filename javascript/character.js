@@ -478,7 +478,32 @@ let character= JSON.parse(sessionStorage.getItem("character"));
         .catch((error) => {
           swal("Ett fel uppstod!", "Det uppstod ett fel", "error");
         });
-    }
+    } else {
+      swal(
+        "Är du säker?",
+        "Detta kan inte ångras. Är du säker på att du vill öka denna egenskap?",
+        "info",
+        {
+          buttons: ["Avbryt", "Bekräfta"],
+        }
+      ).then(()=> {
+         character[attribute] +=1
+         axios
+            .post(levelUpStat + (character.level + 7), character)
+            .then((resp) => {
+              $("#increaseAttributeModal").modal("hide");
+              getCharacterFromServer(character.characterNumber);
+            })
+            .catch((err) => {
+              if (err.response) {
+                swal("Ett fel uppstod", err.response.data.message, "error");
+              }
+            });
+        })
+        .catch((error) => {
+          swal("Ett fel uppstod!", "Det uppstod ett fel", "error");
+        });
+   }
   }
 };
 
