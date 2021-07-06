@@ -424,6 +424,7 @@ const chooseAttribute = () => {
 };
 
 const levelUpCharacterStat = (attribute) => {
+let character= JSON.parse(sessionStorage.getItem("character"));
   if (character[attribute] == 2) {
     if (!character.savedLevel) {
       swal(
