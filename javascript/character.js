@@ -478,7 +478,8 @@ let character= JSON.parse(sessionStorage.getItem("character"));
         .catch((error) => {
           swal("Ett fel uppstod!", "Det uppstod ett fel", "error");
         });
-    } else {
+    } 
+}else {
       swal(
         "Är du säker?",
         "Detta kan inte ångras. Är du säker på att du vill öka denna egenskap?",
@@ -503,7 +504,7 @@ let character= JSON.parse(sessionStorage.getItem("character"));
         .catch((error) => {
           swal("Ett fel uppstod!", "Det uppstod ett fel", "error");
         });
-   }
+   
   }
 };
 
