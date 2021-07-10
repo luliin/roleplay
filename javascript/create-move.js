@@ -1,5 +1,5 @@
-let move = { moveDescription: [], numberOfCheckboxes: 0,  activated: true};
-let newMove = { moveDescription: [], numberOfCheckboxes: 0, activated: true };
+let move = { moveDescription: [], numberOfCheckboxes: 0};
+let newMove = { moveDescription: [], numberOfCheckboxes: 0 };
 let moveOutput = $("#new-move-output");
 const moveName = $("#move-name");
 const moveAttribute = $("#move-attribute");
@@ -185,6 +185,8 @@ const undoLast = () => {
 
   newMove = JSON.parse(JSON.stringify(move));
 
+  renderMove();
+
 };
 
 const showCard = () => {
@@ -192,6 +194,66 @@ const showCard = () => {
     moveOutput.show();
   }
 };
+
+const renderMove = () => {
+  showCard();
+  if(newMove.name){
+    $("#move-name-text").text(newMove.name);
+  } else {
+    $("#move-name-text").text("")
+  }
+  if(newMove.attribute){
+    $("#move-attribute-text").text(newMove.attribute);
+  } else {
+    $("#move-attribute-text").text("")
+  }
+  let activated = newMove.activated
+  if (activated) {
+    $("#move-activated-text").html(`<i class="bi bi-check2-circle"></i>`);
+  } else if (activated===false){
+    $("#move-activated-text").html(`<i class="bi bi-x-circle"></i>`);
+  } else {
+    $("#move-activated-text").html("")
+  }
+  let checkboxes = newMove.numberOfCheckboxes;
+  $("#number-of-checkboxes").html("");
+  for (let i = 0; i < checkboxes; i++) {
+    $("#number-of-checkboxes").append(
+      `<input type="checkbox" name="checkbox-${i + 1}" id="checkbox-${i + 1}">`
+    );
+  }
+  let inputfields = newMove.numberOfInputFields;
+  $("#input-fields-list").html("");
+  for (let i = 0; i < inputfields; i++) {
+    $("#input-fields-list").append(
+      `<li><input type="text" name="input-${i + 1}" id="input-${i + 1}"></li>`
+    );
+  }
+  let description = newMove.moveDescription.filter(element => {
+    if(element.description) {
+      return element
+    }
+  })
+  console.log(description);
+  console.log(newMove)
+  if(description.length>0){
+    $("#move-primary-description").text(description[0].description)
+    $("#other-description").text("")
+    for(let i=1; i<description.length; i++) {
+    $("#other-description").append(`<li class="small">${description[i].description}</li>`);
+    }
+  } else {
+      $("#move-primary-description").text("")
+    }
+    
+
+  
+  
+  
+    
+    
+
+}
 
 const saveMove = () => {
   newMove.activated = moveActivated.val();
