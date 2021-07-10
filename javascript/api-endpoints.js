@@ -69,3 +69,6 @@ let addMoveInputText = startUrl + "/api/v1/moves/input-text?moveNumber=";
 let editCheck = startUrl + "/api/v1/moves/check?checkedNumber=";
 
 let updateCharacter = startUrl + "/api/v1/characters/update-character"
+
+let addNPC = startUrl + "/api/v1/playgroups/add-npc?name="
+let removeNPC = startUrl + "/api/v1/playgroups/delete-npc?name="

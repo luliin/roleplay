@@ -194,6 +194,7 @@ const showCard = () => {
 };
 
 const saveMove = () => {
+  newMove.activated = moveActivated.val();
   
   let characterNumber = JSON.parse(sessionStorage.getItem("characterNumber"))
   if(characterNumber) {

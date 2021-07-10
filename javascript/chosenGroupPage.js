@@ -106,6 +106,21 @@ const loadGroupPage = (data) => {
                 </div>`);
   });
 
+  $("#npc-output").html("");
+
+  data.npc.forEach((character) => {
+    $("#npc-output").append(`<div class="level mb-3">
+    <div class="mx-5 mt-4 mb-3">
+    <h6>Namn: ${character.name}</h6>
+    <h6>Level: ${character.level}</h6>
+    <div class="text-center ">
+    <button type="button" class=" btn playgroup-button mt-2 remove-npc" id="${character.characterNumber}">Ta bort från spelgrupp</button>
+    <button type="button" class=" btn playgroup-button mt-2 view-character" id="${character.characterNumber}">Karaktärssida</button>
+    </div>
+    </div>
+</div>`)
+  });
+
   $(".view-character").on("click", function(e) {
     axios.get(getCharacter + e.target.id)
     .then(resp => {
@@ -139,6 +154,23 @@ const loadGroupPage = (data) => {
         }
       });
   });
+  $(".remove-npc").click(function (e) {
+    axios.post(removeNPC + currentPlaygroup.name + "&characterNumber=" + e.target.id)
+    .then(response => {
+      sessionStorage.setItem("chosenPlaygroup", JSON.stringify(response.data));
+      swal("Borttagningen lyckades!", "NPC:n togs bort från " + response.data.name, "success")
+      .then(()=> {
+        loadPlayGroup();
+      })
+    })
+    .catch((err) => {
+      if(err.response) {
+        swal("Ett fel uppstod", err.response.data.message, "error")
+      } else {
+        console.log(err);
+      }
+    })
+  })
 };
 
 const removePlayer = (gameMaster, userEmail, currentPlaygroup) => {

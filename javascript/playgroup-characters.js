@@ -1,20 +1,19 @@
 $(function () {
-    loadAllCharactersPage()
-})
+  loadAllCharactersPage();
+});
 
-const loadAllCharactersPage = ()  => {
-    $("#save-character-move").click(function(){
-        saveNewMove()
-        checkAvaliability();
-    })
-    let currentPlaygroup =JSON.parse(sessionStorage.getItem("chosenPlaygroup"))
-    let currentCharacter = JSON.parse(sessionStorage.getItem("character"));
-    sessionStorage.setItem("characterNumber", currentCharacter.characterNumber)
-    $("#all-output").html("")
+const loadAllCharactersPage = () => {
+  $("#save-character-move").click(function () {
+    saveNewMove();
+    checkAvaliability();
+  });
+  let currentPlaygroup = JSON.parse(sessionStorage.getItem("chosenPlaygroup"));
+  let currentCharacter = JSON.parse(sessionStorage.getItem("character"));
+  sessionStorage.setItem("characterNumber", currentCharacter.characterNumber);
+  $("#all-output").html("");
 
-    currentPlaygroup.playerCharacters.forEach(character => {
-
-        $("#all-output").append(`<div class="level mb-3 light">
+  currentPlaygroup.playerCharacters.forEach((character) => {
+    $("#all-output").append(`<div class="level mb-3 light">
                     <div class="mx-5 mt-4 mb-3 text-center">
                     <h5>${character.name}</h5>
                     
@@ -26,18 +25,36 @@ const loadAllCharactersPage = ()  => {
                     </div>
                 </div>`);
 
-        $(".view-character-" + character.characterNumber).click(function (e) {
-            sessionStorage.setItem("character", JSON.stringify(character));
-            sessionStorage.setItem("characterNumber", character.characterNumber)
-            checkAvaliability();
-            $("#attributes-tab").tab("show");
-            renderMovesPage();
-
-        })
-
-        
+    $(".view-character-" + character.characterNumber).click(function (e) {
+      sessionStorage.setItem("character", JSON.stringify(character));
+      sessionStorage.setItem("characterNumber", character.characterNumber);
+      checkAvaliability();
+      $("#attributes-tab").tab("show");
+      renderMovesPage();
     });
-}
+  });
+  $("#npc-output").html("");
+  currentPlaygroup.npc.forEach((character) => {
+    $("#npc-output").append(`<div class="level mb-3 light">
+        <div class="mx-5 mt-4 mb-3 text-center">
+        <h5>${character.name}</h5>
+        
+        
+        <div class="text-center ">
+        
+        <button type="button" class=" btn playgroup-button mt-2 view-character-${character.characterNumber}" id="${character.characterNumber}">Välj</button>
+        </div>
+        </div>
+    </div>`);
+    $(".view-character-" + character.characterNumber).click(function (e) {
+      sessionStorage.setItem("character", JSON.stringify(character));
+      sessionStorage.setItem("characterNumber", character.characterNumber);
+      checkAvaliability();
+      $("#attributes-tab").tab("show");
+      renderMovesPage();
+    });
+  });
+};
 
 const saveNewMove = () => {
   let characterNumber = JSON.parse(sessionStorage.getItem("characterNumber"));
@@ -54,7 +71,7 @@ const saveNewMove = () => {
           checkAvaliability();
         })
         .then(() => {
-          renderMovesPage()
+          renderMovesPage();
         })
         .catch((error) => {
           swal("Ett fel uppstod!", error.response.data.message, "error");
