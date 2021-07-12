@@ -245,6 +245,34 @@ const renderMove = () => {
   } else {
       $("#move-primary-description").text("")
     }
+
+    let diceText = newMove.moveDescription.filter(element => {
+      if(element.diceThrowText) {
+        return element
+      }
+    })
+
+    if(diceText.length>0){
+      $("#move-dice-throw-text-list").html("")
+      for(let i=0; i<diceText.length; i++) {
+      $("#move-dice-throw-text-list").append(`<li class="small">${diceText[i].diceThrowText}</li>`);
+      }
+    } else {
+        $("#move-dice-throw-text-list").text("")
+      }
+      let listText = newMove.moveDescription.filter(element => {
+        if(element.listItem) {
+          return element
+        }
+      })
+      if(listText.length>0) {
+        $("#move-list-items").html("")
+        for(let i=0; i<listText.length; i++) {
+          $("#move-list-items").append(`<li class="small">${listText[i].listItem}</li>`);
+          }
+      } else {
+        $("#move-list-items").text("")
+      }
     
 
   
