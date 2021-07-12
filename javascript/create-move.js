@@ -1,4 +1,4 @@
-let move = { moveDescription: [], numberOfCheckboxes: 0};
+let move = { moveDescription: [], numberOfCheckboxes: 0 };
 let newMove = { moveDescription: [], numberOfCheckboxes: 0 };
 let moveOutput = $("#new-move-output");
 const moveName = $("#move-name");
@@ -19,7 +19,7 @@ $(function () {
   $("#add-move-attribute").click(addAttribute);
   moveActivated.change(addActivated);
   moveCheckboxes.change(addCheckboxes);
-  moveInputFields.change(addInputFields)
+  moveInputFields.change(addInputFields);
   $("#add-description").click(addDescription);
   $("#add-list-item").click(addToList);
   $("#add-dice-throw-text").on("click", addToDiceText);
@@ -47,7 +47,6 @@ const addAttribute = () => {
     newMove.attribute = attribute;
     $("#move-attribute-text").text(newMove.attribute);
     showCard();
-
   }
 };
 
@@ -61,7 +60,6 @@ const addActivated = () => {
     $("#move-activated-text").html(`<i class="bi bi-x-circle"></i>`);
   }
   showCard();
-
 };
 
 const addCheckboxes = () => {
@@ -75,7 +73,6 @@ const addCheckboxes = () => {
     );
   }
   showCard();
- 
 };
 
 const addInputFields = () => {
@@ -90,8 +87,7 @@ const addInputFields = () => {
     );
   }
   showCard();
-
-}
+};
 
 const addDescription = () => {
   let description = moveDescription.val();
@@ -109,7 +105,7 @@ const addDescription = () => {
     }
 
     showCard();
- 
+
     moveDescription.val("");
   } else {
     swal("Ogiltig beskrivning!", "Du måste ange text", "error");
@@ -157,36 +153,35 @@ const addToDiceText = () => {
         diceThrowText: diceValue + ": " + diceValueText,
         priorityOrder: priority,
       });
-       $("#move-dice-throw-text-list").html("");
-       newMove.moveDescription.forEach((element) => {
-         if (element.diceThrowText) {
-           $("#move-dice-throw-text-list").append(
-             `<li class="small">${element.diceThrowText}</li>`
-           );
-         }
-       });
+      $("#move-dice-throw-text-list").html("");
+      newMove.moveDescription.forEach((element) => {
+        if (element.diceThrowText) {
+          $("#move-dice-throw-text-list").append(
+            `<li class="small">${element.diceThrowText}</li>`
+          );
+        }
+      });
     }
     //     move.moveDescription.push({ listItem: listItem, priorityOrder: priority });
 
     moveDiceValueText.val("");
     $("#move-dice-throw-text-list").html("");
-    newMove.moveDescription.forEach(element => {
-      if(element.diceThrowText) {
-        $("#move-dice-throw-text-list")
-          .append(`<li class="small">${element.diceThrowText}</li>`);
+    newMove.moveDescription.forEach((element) => {
+      if (element.diceThrowText) {
+        $("#move-dice-throw-text-list").append(
+          `<li class="small">${element.diceThrowText}</li>`
+        );
       }
-    })
+    });
   } else {
     swal("Ogiltig beskrivning!", "Du måste ange text", "error");
   }
 };
 
 const undoLast = () => {
-
   newMove = JSON.parse(JSON.stringify(move));
 
   renderMove();
-
 };
 
 const showCard = () => {
@@ -197,23 +192,23 @@ const showCard = () => {
 
 const renderMove = () => {
   showCard();
-  if(newMove.name){
+  if (newMove.name) {
     $("#move-name-text").text(newMove.name);
   } else {
-    $("#move-name-text").text("")
+    $("#move-name-text").text("");
   }
-  if(newMove.attribute){
+  if (newMove.attribute) {
     $("#move-attribute-text").text(newMove.attribute);
   } else {
-    $("#move-attribute-text").text("")
+    $("#move-attribute-text").text("");
   }
-  let activated = newMove.activated
+  let activated = newMove.activated;
   if (activated) {
     $("#move-activated-text").html(`<i class="bi bi-check2-circle"></i>`);
-  } else if (activated===false){
+  } else if (activated === false) {
     $("#move-activated-text").html(`<i class="bi bi-x-circle"></i>`);
   } else {
-    $("#move-activated-text").html("")
+    $("#move-activated-text").html("");
   }
   let checkboxes = newMove.numberOfCheckboxes;
   $("#number-of-checkboxes").html("");
@@ -229,83 +224,87 @@ const renderMove = () => {
       `<li><input type="text" name="input-${i + 1}" id="input-${i + 1}"></li>`
     );
   }
-  let description = newMove.moveDescription.filter(element => {
-    if(element.description) {
-      return element
+  let description = newMove.moveDescription.filter((element) => {
+    if (element.description) {
+      return element;
     }
-  })
-  
-  if(description.length>0){
-    $("#move-primary-description").text(description[0].description)
-    $("#other-description").text("")
-    for(let i=1; i<description.length; i++) {
-    $("#other-description").append(`<li class="small">${description[i].description}</li>`);
+  });
+
+  if (description.length > 0) {
+    $("#move-primary-description").text(description[0].description);
+    $("#other-description").text("");
+    for (let i = 1; i < description.length; i++) {
+      $("#other-description").append(
+        `<li class="small">${description[i].description}</li>`
+      );
     }
   } else {
-      $("#move-primary-description").text("")
+    $("#move-primary-description").text("");
+  }
+
+  let diceText = newMove.moveDescription.filter((element) => {
+    if (element.diceThrowText) {
+      return element;
     }
+  });
 
-    let diceText = newMove.moveDescription.filter(element => {
-      if(element.diceThrowText) {
-        return element
-      }
-    })
-
-    if(diceText.length>0){
-      $("#move-dice-throw-text-list").html("")
-      for(let i=0; i<diceText.length; i++) {
-      $("#move-dice-throw-text-list").append(`<li class="small">${diceText[i].diceThrowText}</li>`);
-      }
-    } else {
-        $("#move-dice-throw-text-list").text("")
-      }
-      let listText = newMove.moveDescription.filter(element => {
-        if(element.listItem) {
-          return element
-        }
-      })
-      if(listText.length>0) {
-        $("#move-list-items").html("")
-        for(let i=0; i<listText.length; i++) {
-          $("#move-list-items").append(`<li class="small">${listText[i].listItem}</li>`);
-          }
-      } else {
-        $("#move-list-items").text("")
-      }
-    
-
-  
-  
-  
-    
-    
-
-}
+  if (diceText.length > 0) {
+    $("#move-dice-throw-text-list").html("");
+    for (let i = 0; i < diceText.length; i++) {
+      $("#move-dice-throw-text-list").append(
+        `<li class="small">${diceText[i].diceThrowText}</li>`
+      );
+    }
+  } else {
+    $("#move-dice-throw-text-list").text("");
+  }
+  let listText = newMove.moveDescription.filter((element) => {
+    if (element.listItem) {
+      return element;
+    }
+  });
+  if (listText.length > 0) {
+    $("#move-list-items").html("");
+    for (let i = 0; i < listText.length; i++) {
+      $("#move-list-items").append(
+        `<li class="small">${listText[i].listItem}</li>`
+      );
+    }
+  } else {
+    $("#move-list-items").text("");
+  }
+};
 
 const saveMove = () => {
   newMove.activated = moveActivated.val();
-  
-  let characterNumber = JSON.parse(sessionStorage.getItem("characterNumber"))
-  if(characterNumber) {
-    axios.post(addMoveToCharacter + characterNumber, newMove)
-    .then(resp => {
-      swal("Manöver tillagd!", "" + resp.data.name + " har lagts till.", "success")
-      .then(()=> {
-        refreshPage();
-        resetMoves();
-        
-      })
-      .then(() => {
-        checkAvaliability();
-      })
-      .catch(error => {
-        swal("Ett fel uppstod!", error.response.data.message, "error");
-      })
-    })
+
+  let characterNumber = JSON.parse(sessionStorage.getItem("characterNumber"));
+  if (characterNumber) {
+    axios.post(addMoveToCharacter + characterNumber, newMove).then((resp) => {
+      swal(
+        "Manöver tillagd!",
+        "" + resp.data.name + " har lagts till.",
+        "success"
+      )
+        .then(() => {
+          refreshPage();
+          resetMoves();
+        })
+        .then(() => {
+          checkAvaliability();
+        })
+        .catch((error) => {
+          swal("Ett fel uppstod!", error.response.data.message, "error");
+        });
+    });
   } else {
-    swal("Ingen karaktär skapad!", "Du måste skapa en karaktär innan du kan lägga till manövrar!", "error")
+    swal(
+      "Ingen karaktär skapad!",
+      "Du måste skapa en karaktär innan du kan lägga till manövrar!",
+      "error"
+    );
   }
-}
+};
 
 const refreshPage = () => {
   moveOutput.hide();
@@ -317,12 +316,12 @@ const refreshPage = () => {
   $("#move-list-items").html("");
   $("#move-dice-throw-text-list").html("");
   $("#other-description").html("");
-}
+};
 
 const resetMoves = () => {
   move = { moveDescription: [] };
   newMove = { moveDescription: [] };
-}
+};
 
 {
   /* <div class="card mx-4 mb-3 bg-dark text-success playgroup mb-5">
