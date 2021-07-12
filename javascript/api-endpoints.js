@@ -72,3 +72,5 @@ let updateCharacter = startUrl + "/api/v1/characters/update-character"
 
 let addNPC = startUrl + "/api/v1/playgroups/add-npc?name="
 let removeNPC = startUrl + "/api/v1/playgroups/delete-npc?name="
+
+let getOneMove = startUrl + "/api/v1/moves/get?moveNumber="
