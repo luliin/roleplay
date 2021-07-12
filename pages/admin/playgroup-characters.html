@@ -1086,6 +1086,165 @@
     </div>
   </div>
 
+  <!-- Edit move modal -->
+  <div class="modal fade" id="editMoveModal" tabindex="-1" aria-labelledby="editMoveModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-dark">
+          <h5 class="modal-title" id="loginLabel">Ändra manöver</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="loginBody">
+          <div class="container my-3">
+            <div class="col-12 text-start mt-5">
+              <div class="card  mb-3 bg-dark text-success playgroup mb-5" id="edit-move-output">
+                <form class="row g-3 light ">
+                  <div class="col-12 col-lg-3">
+                    <label for="edit-move-name" class="form-label">Namn</label>
+                    <div class="input-group">
+      
+                      <input class="form-control" aria-label="With textarea" id="edit-move-name">
+                      <button type="button" class="btn playgroup-button light" id="change-move-name">Ändra</button>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                    <label for="move-attribute" class="form-label">Attribut</label>
+                    <div class="input-group">
+      
+                      <select id="edit-move-attribute" class="form-select">
+                        <option selected="" value="">Inget</option>
+                        <option value="(STY)">Styrka</option>
+                        <option value="(SMI)">Smidighet</option>
+                        <option value="(FYS)">Fysik</option>
+                        <option value="(INT)">Intelligens</option>
+                        <option value="(VIS)">Visom</option>
+                        <option value="(KAR)">Karisma</option>
+                      </select>
+                      <button type="button" class="btn playgroup-button light" id="change-move-attribute">Ändra</button>
+                    </div>
+      
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <label for="edit-move-activated" class="form-label me-2">Aktiverad</label>
+                    <select id="edit-move-activated" class="form-select">
+                      <option selected="" value="1">Ja</option>
+                      <option value="0">Nej</option>
+                    </select>
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <label for="edit-move-checkboxes" class="form-label">Antal checkboxar</label>
+                    <select id="edit-move-checkboxes" class="form-select">
+                      <option selected="" value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                    <label for="move-description" class="form-label">Beskrivning</label>
+                    <div class="input-group">
+      
+                      <textarea class="form-control" aria-label="With textarea" id="edit-move-description"></textarea>
+                      <button type="button" class="btn playgroup-button light" id="change-description">Ändra</button>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                    <label for="move-list-item" class="form-label">Ändra lista</label>
+                    <div class="input-group">
+      
+                      <input class="form-control" aria-label="With textarea" id="edit-list-item">
+                      <button type="button" class="btn playgroup-button light" id="change-list-item">Ändra</button>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                    <label for="move-dice-throw-text" class="form-label">Tärningstext</label>
+                    <div class="input-group">
+                      <select name="dice-value" id="dice-value" class="form-select" style="max-width:90px">
+                        <option selected="" value="10+" class="">10+</option>
+                        <option value="7-9">7-9</option>
+                        <option value="6-">6-</option>
+                      </select>
+                      <input class="form-control" aria-label="With textarea" id="edit-dice-throw-text">
+                      <button type="button" class="btn playgroup-button light" id="change-dice-throw-text">Ändra</button>
+                    </div>
+      
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <label for="move-inputfields" class="form-label">Antal inputfält</label>
+                    <select id="move-inputfields" class="form-select">
+                      <option selected="" value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
+                  </div>
+                </form>
+                <div class="mt-3 card-header bg-transparent playgroup text-center">
+                  <h5 class="m-0 light">
+                    <span id="edit-move-name-text" class="info"></span>
+                    
+                    <span id="edit-move-attribute-text" class="info"></span>
+                    <span id="edit-move-activated-text" class="info"></span>
+                  
+                  </h5>
+                </div>
+                <div class="card-body text-success">
+                  <div class="text-center" id="edit-number-of-checkboxes">
+                  </div>
+                  <h6 class="card-title light small mt-2">
+                    <small id="edit-move-primary-description"></small>
+                  </h6>
+                </div>
+                <div class="card-footer bg-transparent playgroup light">
+  
+  
+                  <ul class="text-start small list-unstyled ms-3" id="edit-move-dice-throw-text-list">
+                    
+  
+                  </ul>
+                  <ul class="text-start small" id="edit-move-list-items">
+                    
+                  </ul>
+                  <ul class="text-start small list-unstyled ms-3" id="edit-input-fields-list">
+  
+                  </ul>
+                  <ul class="text-start small list-unstyled ms-3" id="edit-other-description">
+  
+                  </ul>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer text-center" id="loginFooter">
+          <div class="col">
+            
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-dark" id="get-new-move">
+              Spara ändringar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
 
   <footer class="text-center text-lg-start" id="my-account-footer">
