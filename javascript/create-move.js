@@ -234,8 +234,7 @@ const renderMove = () => {
       return element
     }
   })
-  console.log(description);
-  console.log(newMove)
+  
   if(description.length>0){
     $("#move-primary-description").text(description[0].description)
     $("#other-description").text("")
