@@ -1152,7 +1152,9 @@
                     <div class="input-group">
       
                       <textarea class="form-control" aria-label="With textarea" id="edit-move-description"></textarea>
-                      <button type="button" class="btn playgroup-button light" id="change-description">Ändra</button>
+                      <button type="button" class="btn playgroup-button light p-0 px-1" id="remove-description" style="max-width: 50px;">Töm</button>
+
+                      <button type="button" class="btn playgroup-button light p-0 px-2" id="change-description">Lägg till</button>
                     </div>
                   </div>
                   <div class="col-12 col-lg-3">
@@ -1160,26 +1162,29 @@
                     <div class="input-group">
       
                       <input class="form-control" aria-label="With textarea" id="edit-list-item">
-                      <button type="button" class="btn playgroup-button light" id="change-list-item">Ändra</button>
+                      <button type="button" class="btn playgroup-button light p-0 px-1" id="remove-list-item" style="max-width: 50px;">Töm</button>
+
+                      <button type="button" class="btn playgroup-button light p-0 px-2" id="change-list-item">Lägg till</button>
                     </div>
                   </div>
                   <div class="col-12 col-lg-3">
                     <label for="move-dice-throw-text" class="form-label">Tärningstext</label>
                     <div class="input-group">
-                      <select name="dice-value" id="dice-value" class="form-select" style="max-width:90px">
+                      <select name="edit-dice-value" id="edit-dice-value" class="form-select" style="max-width:78px">
                         <option selected="" value="10+" class="">10+</option>
                         <option value="7-9">7-9</option>
                         <option value="6-">6-</option>
                       </select>
                       <input class="form-control" aria-label="With textarea" id="edit-dice-throw-text">
-                      <button type="button" class="btn playgroup-button light" id="change-dice-throw-text">Ändra</button>
+                      <button type="button" class="btn playgroup-button light p-0 px-1" id="remove-dice-throw-text" style="max-width: 50px;">Töm</button>
+                      <button type="button" class="btn playgroup-button light p-0 px-2" id="change-dice-throw-text">Lägg till</button>
                     </div>
       
                   </div>
                   <div class="col-6 col-lg-3">
-                    <label for="move-inputfields" class="form-label">Antal inputfält</label>
-                    <select id="move-inputfields" class="form-select">
-                      <option selected="" value="0">0</option>
+                    <label for="edit-move-inputfields" class="form-label">Antal inputfält</label>
+                    <select id="edit-move-inputfields" class="form-select">
+                      <option selected value="0">0</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -1235,7 +1240,7 @@
           <div class="col">
             
           </div>
-          <div class="col">
+          <div class="col text-center">
             <button type="button" class="btn btn-dark" id="get-new-move">
               Spara ändringar
             </button>

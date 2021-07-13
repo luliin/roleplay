@@ -132,16 +132,20 @@ const renderAllMoves = (data) => {
           } else {
             $("#edit-move-checkboxes").val("0")
           }
+          if(response.data.numberOfInputFields>0) {
+            $("#edit-move-inputfields").val(""+response.data.numberOfInputFields)
+          } else {
+            $("#edit-move-inputfields").val("0")
+          }
+          renderEditMoves()
           
-          $("#edit-move-name-text").click(function(){
-            $(this).hide();
-            $("#edit-move-group").show();
-          })
+          
 
-          $("#edit-move-name").click(function(){
+          $("#change-move-name").click(function(){
             if(!moveToChange) {
               moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
             }
+            console.log(moveToChange);
             let newName = $("#new-move-name").val();
             if(newName) {
               moveToChange.name=newName;
@@ -170,9 +174,49 @@ const renderAllMoves = (data) => {
                 $("#edit-move-activated-text").html(`<i class="bi bi-x-circle"></i>`)
               }
             }
+          })
 
-            $("#edit-activated-group").hide();
-            $("#edit-move-activated-text").show();
+          $("#remove-description").click(function() {
+            if(!moveToChange) {
+              moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
+            }
+            console.log(moveToChange);
+            let noDescriptionList = moveToChange.moveDescription.filter(element => {
+              if(!element.description) {
+                return element;
+              }
+            })
+            console.log(noDescriptionList);
+            moveToChange.moveDescription = noDescriptionList;
+            console.log(moveToChange);
+            renderEditMoves();
+          })
+
+          $("#remove-dice-throw-text").click(function() {
+            if(!moveToChange) {
+              moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
+            }
+            let noDiceList = moveToChange.moveDescription.filter(element => {
+              if(!element.diceThrowText) {
+                return element;
+              }
+            })
+            moveToChange.moveDescription = noDiceList;
+            console.log(moveToChange);
+            renderEditMoves();
+          })
+          $("#remove-list-item").click(function() {
+            if(!moveToChange) {
+              moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
+            }
+            let noItemList = moveToChange.moveDescription.filter(element => {
+              if(!element.listItem) {
+                return element;
+              }
+            })
+            moveToChange.moveDescription = noItemList;
+            console.log(moveToChange);
+            renderEditMoves();
           })
 
         })
@@ -276,6 +320,84 @@ const renderAllMoves = (data) => {
     }
   });
 };
+
+const renderEditMoves = () => {
+  if(!moveToChange) {
+    moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
+  }
+  if(moveToChange.name) {
+    $("#edit-move-name-text").text(moveToChange.name);
+  } else {
+    $("#edit-move-name-text").text("")
+  }
+  if(moveToChange.attribute) {
+    $("#edit-move-attribute-text").text(moveToChange.attribute);
+  } else {
+    $("#edit-move-attribute-text").text("")
+  }
+  if(moveToChange.activated) {
+   $("#edit-move-activated-text").html(`<i class="bi bi-check2-circle"></i>`)
+  } else {
+  $("#edit-move-activated-text").html(`<i class="bi bi-x-circle"></i>`)
+  }
+  if(moveToChange.numberOfCheckboxes>0) {
+    $("#edit-number-of-checkboxes").html("")
+    for(let i = 0; i < moveToChange.numberOfCheckboxes; i++) {
+      $("#edit-number-of-checkboxes").append(`<input type="checkbox">`)
+    }
+  } else {
+    $("#edit-number-of-checkboxes").html("")
+  }
+  let description = moveToChange.moveDescription.filter(element => {
+    if(element.description) {
+      return element;
+    }
+  })
+  if(description.length > 0) {
+    $("#edit-move-primary-description").text(description[0].description);
+    $("#edit-other-description").html("")
+    for (let i = 1; i < description.length; i++) {
+      $("#edit-other-description").prepend(`<li>${description[i].description}</li>`)
+    }
+  } else {
+    $("#edit-move-primary-description").text("")
+    $("#edit-other-description").html("")
+  }
+  let diceThrowText = moveToChange.moveDescription.filter(element => {
+    if(element.diceThrowText) {
+      return element;
+    }
+  })
+  if(diceThrowText.length > 0) {
+    $("#edit-move-dice-throw-text-list").html("")
+    for (let i = 0; i < diceThrowText.length; i++) {
+      $("#edit-move-dice-throw-text-list").append(`<li>${diceThrowText[i].diceThrowText}</li>`)
+    }
+  } else {
+    $("#edit-move-dice-throw-text-list").html("")
+  }
+  let listItems = moveToChange.moveDescription.filter(element => {
+    if(element.listItem) {
+      return element;
+    }
+  })
+  if(listItems.length > 0) {
+    $("#edit-move-list-items").html("")
+    for (let i = 0; i < listItems.length; i++) {
+      $("#edit-move-list-items").append(`<li>${listItems[i].listItem}</li>`)
+    }
+  } else {
+    $("#edit-move-list-items").html("")
+  }
+  if(moveToChange.numberOfInputFields > 0) {
+    $("#edit-input-fields-list").html("")
+    for (let i = 0; i < moveToChange.numberOfInputFields; i++) {
+      $("#edit-input-fields-list").append(`<li><input type="text"></li>`)
+    }
+  } else {
+    $("#edit-input-fields-list").html("")
+  }
+}
 
 const renderMoves = (data) => {
   let isGameMaster =
@@ -438,4 +560,4 @@ const renderMoves = (data) => {
       }
     }
   });
-};
+}
