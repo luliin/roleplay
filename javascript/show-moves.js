@@ -137,7 +137,7 @@ const renderAllMoves = (data) => {
           } else {
             $("#edit-move-inputfields").val("0")
           }
-          renderEditMoves()
+          
           
           
 
@@ -146,25 +146,21 @@ const renderAllMoves = (data) => {
               moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
             }
             console.log(moveToChange);
-            let newName = $("#new-move-name").val();
+            let newName = $("#edit-move-name").val();
             if(newName) {
               moveToChange.name=newName;
               $("#edit-move-name-text").text(newName);
             }
-            $("#edit-move-group").hide();
-            $("#edit-move-name-text").show();
+            
           })
 
-          $("#edit-move-activated-text").click(function(){
-            $(this).hide();
-            $("#edit-activated-group").show();
-          })
+          
 
-          $("#change-activated").click(function() {
+          $("#edit-move-activated").change(function() {
             if(!moveToChange) {
               moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
             }
-            let activated = +$("#edit-activated").val();
+            let activated = +$("#edit-move-activated").val();
             if(activated=== 1 || activated===0) {
               if(activated ===1) {
                 moveToChange.activated = true;
@@ -175,6 +171,7 @@ const renderAllMoves = (data) => {
               }
             }
           })
+          
 
           $("#remove-description").click(function() {
             if(!moveToChange) {
@@ -188,6 +185,7 @@ const renderAllMoves = (data) => {
             })
             console.log(noDescriptionList);
             moveToChange.moveDescription = noDescriptionList;
+            sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
             console.log(moveToChange);
             renderEditMoves();
           })
@@ -202,6 +200,7 @@ const renderAllMoves = (data) => {
               }
             })
             moveToChange.moveDescription = noDiceList;
+            sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
             console.log(moveToChange);
             renderEditMoves();
           })
@@ -215,10 +214,14 @@ const renderAllMoves = (data) => {
               }
             })
             moveToChange.moveDescription = noItemList;
+            sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
             console.log(moveToChange);
             renderEditMoves();
           })
 
+        })
+        .then(()=> {
+          renderEditMoves()
         })
         $("#editMoveModal").modal("show");
       })
@@ -322,9 +325,7 @@ const renderAllMoves = (data) => {
 };
 
 const renderEditMoves = () => {
-  if(!moveToChange) {
-    moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
-  }
+  moveToChange = JSON.parse(sessionStorage.getItem("moveToChange")); 
   if(moveToChange.name) {
     $("#edit-move-name-text").text(moveToChange.name);
   } else {
