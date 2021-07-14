@@ -31,8 +31,6 @@ const renderMovesPage = () => {
 
 const addListenerToUpdateMove = () => [
   $("#update-new-move").click(function () {
-    console.log("Klick");
-    console.log(moveToChange);
     if (moveToChange) {
       axios
         .post(updateMove + moveToChange.moveNumber, moveToChange)
@@ -80,7 +78,6 @@ const renderAllMovesPage = () => {
 };
 
 const renderAllMoves = (data) => {
-  
   let isGameMaster =
     window.location.pathname == "/pages/admin/playgroup-characters.html";
   $("#move-output").html("");
@@ -131,7 +128,6 @@ const renderAllMoves = (data) => {
       <button type="button" class="btn playgroup-button change-button-${index}" id="${move.moveNumber}">Ändra</button>
       </div></form>`);
       $(".button-" + index).click(function (e) {
-        console.log(e.target.id);
         let character = JSON.parse(sessionStorage.getItem("character"));
         let characterNumber = character.characterNumber;
         axios
@@ -149,35 +145,42 @@ const renderAllMoves = (data) => {
             }
           });
       });
-      $(".change-button-" +index).click(function (e){
-        sessionStorage.setItem("moveNumber", e.target.id)
+      $(".change-button-" + index).click(function (e) {
+        sessionStorage.setItem("moveNumber", e.target.id);
         $("#edit-move-group").hide();
         $("#edit-activated-group").hide();
-        axios.get(getOneMove+e.target.id)
-        .then(response => {
-          sessionStorage.setItem("moveToChange", JSON.stringify(response.data))
-          $("#edit-move-name-text").text(response.data.name)
-          $("#edit-move-name").val(response.data.name)
-          $("#edit-move-attribute-text").text(response.data.attribute)
-          $("#edit-move-attribute").val(response.data.attribute)
-          if(response.data.numberOfCheckboxes>0) {
-            $("#edit-move-checkboxes").val(""+response.data.numberOfCheckboxes)
-          } else {
-            $("#edit-move-checkboxes").val("0")
-          }
-          if(response.data.numberOfInputFields>0) {
-            $("#edit-move-inputfields").val(""+response.data.numberOfInputFields)
-          } else {
-            $("#edit-move-inputfields").val("0")
-          }
-          addListenersToEdit();
-         
-        })
-        .then(()=> {
-          renderEditMoves()
-        })
+        axios
+          .get(getOneMove + e.target.id)
+          .then((response) => {
+            sessionStorage.setItem(
+              "moveToChange",
+              JSON.stringify(response.data)
+            );
+            $("#edit-move-name-text").text(response.data.name);
+            $("#edit-move-name").val(response.data.name);
+            $("#edit-move-attribute-text").text(response.data.attribute);
+            $("#edit-move-attribute").val(response.data.attribute);
+            if (response.data.numberOfCheckboxes > 0) {
+              $("#edit-move-checkboxes").val(
+                "" + response.data.numberOfCheckboxes
+              );
+            } else {
+              $("#edit-move-checkboxes").val("0");
+            }
+            if (response.data.numberOfInputFields > 0) {
+              $("#edit-move-inputfields").val(
+                "" + response.data.numberOfInputFields
+              );
+            } else {
+              $("#edit-move-inputfields").val("0");
+            }
+            addListenersToEdit();
+          })
+          .then(() => {
+            renderEditMoves();
+          });
         $("#editMoveModal").modal("show");
-      })
+      });
     }
     for (let i = 0; i < move.numberOfCheckboxes; i++) {
       $(`#number-of-checkboxes-${index}`).append(
@@ -197,7 +200,6 @@ const renderAllMoves = (data) => {
         axios
           .post(editCheck + checked + "&moveNumber=" + move.moveNumber)
           .then((resp) => {
-            console.log(resp.data);
           })
           .catch((err) => {
             if (err.response) {
@@ -208,11 +210,8 @@ const renderAllMoves = (data) => {
           });
       });
     }
-    
-    
 
     for (let i = 0; i < move.numberOfInputFields; i++) {
-      console.log(move.numberOfInputFields);
       $(`#input-fields-list-${index}`).append(
         `<li>
             <div class="input-group mb-3">
@@ -225,19 +224,18 @@ const renderAllMoves = (data) => {
       );
     }
     $(".save-text").click(function (e) {
-      console.log(e.target.id);
-      console.log($("#input-text-" + e.target.id).val());
-      console.log(move.inputText[e.target.id]);
       move.inputText[e.target.id] = $("#input-text-" + e.target.id).val();
-      console.log(move.inputText[e.target.id]);
-      console.log(move);
 
       axios
         .post(
           addMoveInputText + move.moveNumber + "&inputText=" + move.inputText
         )
         .then((resp) => {
-          swal("Sparat", "Texten har lagts till i " + resp.data.name, "success");
+          swal(
+            "Sparat",
+            "Texten har lagts till i " + resp.data.name,
+            "success"
+          );
         })
         .catch((err) => {
           if (err.response) {
@@ -277,72 +275,69 @@ const renderAllMoves = (data) => {
   });
 };
 
-
 const addListenersToEdit = () => {
-  $("#change-move-name").click(function(){
-    if(!moveToChange) {
+  $("#change-move-name").click(function () {
+    if (!moveToChange) {
       moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
     }
-    console.log(moveToChange);
     let newName = $("#edit-move-name").val();
-    if(newName) {
-      moveToChange.name=newName;
+    if (newName) {
+      moveToChange.name = newName;
       $("#edit-move-name-text").text(newName);
     }
-    
-  })
+  });
 
-  $("#change-move-attribute").click(function(){
-    if(!moveToChange) {
+  $("#change-move-attribute").click(function () {
+    if (!moveToChange) {
       moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
     }
     let newAttribute = $("#edit-move-attribute").val();
     $("edit-move-attribute-text").text(newAttribute);
-    moveToChange.attribute=newAttribute;
+    moveToChange.attribute = newAttribute;
     sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
     renderEditMoves();
-  })
+  });
 
   $("#change-description").click(function () {
-    if(!moveToChange) {
+    if (!moveToChange) {
       moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
     }
     let newDescription = $("#edit-move-description").val();
-    if(newDescription) {
+    if (newDescription) {
       moveToChange.moveDescription.push({
         description: newDescription,
-        priorityOrder : (moveToChange.moveDescription.length +1)
-      })
+        priorityOrder: moveToChange.moveDescription.length + 1,
+      });
     }
     sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
     $("#edit-move-description").val("");
     renderEditMoves();
-  })
+  });
 
-  $("#change-list-item").click(function() {
-    if(!moveToChange) {
+  $("#change-list-item").click(function () {
+    if (!moveToChange) {
       moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
     }
     let newItem = $("#edit-list-item").val();
-    
-    if(newItem) {
+
+    if (newItem) {
       moveToChange.moveDescription.push({
-        "diceThrowText": null,
-        "description": null,
-        "listItem": newItem,
-        "numberOfCheckboxes": null,
-        "inputText": null,
-        "numberOfInputFields": null,
-        priorityOrder : (moveToChange.moveDescription.length +1)
-      })
+        diceThrowText: null,
+        description: null,
+        listItem: newItem,
+        numberOfCheckboxes: null,
+        inputText: null,
+        numberOfInputFields: null,
+        priorityOrder: moveToChange.moveDescription.length + 1,
+      });
     }
     sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
     $("#edit-list-item").val("");
     renderEditMoves();
-  })
+  });
 
   $("#change-dice-throw-text").click(function () {
-    if(!moveToChange) {
+    if (!moveToChange) {
       moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
     }
     let newDice = $("#edit-dice-throw-text").val();
@@ -350,186 +345,185 @@ const addListenersToEdit = () => {
       newDice = $("#edit-dice-value").val() + ": " + newDice;
     }
 
-    let found = moveToChange.moveDescription.find(element => {
+    let found = moveToChange.moveDescription.find((element) => {
       if (element.diceThrowText) {
         if (element.diceThrowText.startsWith($("#edit-dice-value").val())) {
           return element;
         }
       }
-    })
-    if(found) {
+    });
+    if (found) {
       found.diceThrowText = newDice;
     } else {
       moveToChange.moveDescription.push({
         diceThrowText: newDice,
-        priorityOrder: (moveToChange.moveDescription.length+1),
+        priorityOrder: moveToChange.moveDescription.length + 1,
       });
     }
     sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
     renderEditMoves();
+  });
 
-  })
-
-  $("#edit-move-checkboxes").change(function() {
-    if(!moveToChange) {
+  $("#edit-move-checkboxes").change(function () {
+    if (!moveToChange) {
       moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
     }
     moveToChange.numberOfCheckboxes = +$(this).val();
     sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
     renderEditMoves();
-  })
+  });
 
-  $("#edit-move-inputfields").change(function() {
-    if(!moveToChange) {
+  $("#edit-move-inputfields").change(function () {
+    if (!moveToChange) {
       moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
     }
     moveToChange.numberOfInputFields = +$(this).val();
     sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
     renderEditMoves();
-  })
+  });
 
-  
-
-  $("#edit-move-activated").change(function() {
-    if(!moveToChange) {
+  $("#edit-move-activated").change(function () {
+    if (!moveToChange) {
       moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
     }
     let activated = +$("#edit-move-activated").val();
-    if(activated=== 1 || activated===0) {
-      if(activated ===1) {
+    if (activated === 1 || activated === 0) {
+      if (activated === 1) {
         moveToChange.activated = true;
-        $("#edit-move-activated-text").html(`<i class="bi bi-check2-circle"></i>`)
+        $("#edit-move-activated-text").html(
+          `<i class="bi bi-check2-circle"></i>`
+        );
       } else {
         moveToChange.activated = false;
-        $("#edit-move-activated-text").html(`<i class="bi bi-x-circle"></i>`)
+        $("#edit-move-activated-text").html(`<i class="bi bi-x-circle"></i>`);
       }
     }
-  })
-  
+  });
 
-  $("#remove-description").click(function() {
-    if(!moveToChange) {
+  $("#remove-description").click(function () {
+    if (!moveToChange) {
       moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
     }
-    console.log(moveToChange);
-    let noDescriptionList = moveToChange.moveDescription.filter(element => {
-      if(!element.description) {
+
+    let noDescriptionList = moveToChange.moveDescription.filter((element) => {
+      if (!element.description) {
         return element;
       }
-    })
-    console.log(noDescriptionList);
+    });
+
     moveToChange.moveDescription = noDescriptionList;
     sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
-    console.log(moveToChange);
-    renderEditMoves();
-  })
 
-  $("#remove-dice-throw-text").click(function() {
-    if(!moveToChange) {
+    renderEditMoves();
+  });
+
+  $("#remove-dice-throw-text").click(function () {
+    if (!moveToChange) {
       moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
     }
-    let noDiceList = moveToChange.moveDescription.filter(element => {
-      if(!element.diceThrowText) {
+    let noDiceList = moveToChange.moveDescription.filter((element) => {
+      if (!element.diceThrowText) {
         return element;
       }
-    })
+    });
     moveToChange.moveDescription = noDiceList;
     sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
-    console.log(moveToChange);
     renderEditMoves();
-  })
-  $("#remove-list-item").click(function() {
-    if(!moveToChange) {
+  });
+  $("#remove-list-item").click(function () {
+    if (!moveToChange) {
       moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
     }
-    let noItemList = moveToChange.moveDescription.filter(element => {
-      if(!element.listItem) {
+    let noItemList = moveToChange.moveDescription.filter((element) => {
+      if (!element.listItem) {
         return element;
       }
-    })
+    });
     moveToChange.moveDescription = noItemList;
     sessionStorage.setItem("moveToChange", JSON.stringify(moveToChange));
-    console.log(moveToChange);
     renderEditMoves();
-  })
-}
+  });
+};
 
 const renderEditMoves = () => {
-  moveToChange = JSON.parse(sessionStorage.getItem("moveToChange")); 
-  if(moveToChange.name) {
+  moveToChange = JSON.parse(sessionStorage.getItem("moveToChange"));
+  if (moveToChange.name) {
     $("#edit-move-name-text").text(moveToChange.name);
   } else {
-    $("#edit-move-name-text").text("")
+    $("#edit-move-name-text").text("");
   }
-  if(moveToChange.attribute) {
+  if (moveToChange.attribute) {
     $("#edit-move-attribute-text").text(moveToChange.attribute);
   } else {
-    $("#edit-move-attribute-text").text("")
+    $("#edit-move-attribute-text").text("");
   }
-  if(moveToChange.activated) {
-   $("#edit-move-activated-text").html(`<i class="bi bi-check2-circle"></i>`)
+  if (moveToChange.activated) {
+    $("#edit-move-activated-text").html(`<i class="bi bi-check2-circle"></i>`);
   } else {
-  $("#edit-move-activated-text").html(`<i class="bi bi-x-circle"></i>`)
+    $("#edit-move-activated-text").html(`<i class="bi bi-x-circle"></i>`);
   }
-  if(moveToChange.numberOfCheckboxes>0) {
-    $("#edit-number-of-checkboxes").html("")
-    for(let i = 0; i < moveToChange.numberOfCheckboxes; i++) {
-      $("#edit-number-of-checkboxes").append(`<input type="checkbox">`)
+  if (moveToChange.numberOfCheckboxes > 0) {
+    $("#edit-number-of-checkboxes").html("");
+    for (let i = 0; i < moveToChange.numberOfCheckboxes; i++) {
+      $("#edit-number-of-checkboxes").append(`<input type="checkbox">`);
     }
   } else {
-    $("#edit-number-of-checkboxes").html("")
+    $("#edit-number-of-checkboxes").html("");
   }
-  let description = moveToChange.moveDescription.filter(element => {
-    if(element.description) {
+  let description = moveToChange.moveDescription.filter((element) => {
+    if (element.description) {
       return element;
     }
-  })
-  if(description.length > 0) {
+  });
+  if (description.length > 0) {
     $("#edit-move-primary-description").text(description[0].description);
-    $("#edit-other-description").html("")
+    $("#edit-other-description").html("");
     for (let i = 1; i < description.length; i++) {
-      $("#edit-other-description").append(`<li>${description[i].description}</li>`)
+      $("#edit-other-description").append(
+        `<li>${description[i].description}</li>`
+      );
     }
   } else {
-    $("#edit-move-primary-description").text("")
-    $("#edit-other-description").html("")
+    $("#edit-move-primary-description").text("");
+    $("#edit-other-description").html("");
   }
-  let diceThrowText = moveToChange.moveDescription.filter(element => {
-    if(element.diceThrowText) {
+  let diceThrowText = moveToChange.moveDescription.filter((element) => {
+    if (element.diceThrowText) {
       return element;
     }
-  })
-  if(diceThrowText.length > 0) {
-    $("#edit-move-dice-throw-text-list").html("")
+  });
+  if (diceThrowText.length > 0) {
+    $("#edit-move-dice-throw-text-list").html("");
     for (let i = 0; i < diceThrowText.length; i++) {
-      $("#edit-move-dice-throw-text-list").append(`<li>${diceThrowText[i].diceThrowText}</li>`)
+      $("#edit-move-dice-throw-text-list").append(
+        `<li>${diceThrowText[i].diceThrowText}</li>`
+      );
     }
   } else {
-    $("#edit-move-dice-throw-text-list").html("")
+    $("#edit-move-dice-throw-text-list").html("");
   }
-  let listItems = moveToChange.moveDescription.filter(element => {
-    if(element.listItem) {
+  let listItems = moveToChange.moveDescription.filter((element) => {
+    if (element.listItem) {
       return element;
     }
-  })
-  if(listItems.length > 0) {
-    $("#edit-move-list-items").html("")
+  });
+  if (listItems.length > 0) {
+    $("#edit-move-list-items").html("");
     for (let i = 0; i < listItems.length; i++) {
-      $("#edit-move-list-items").append(`<li>${listItems[i].listItem}</li>`)
+      $("#edit-move-list-items").append(`<li>${listItems[i].listItem}</li>`);
     }
   } else {
-    $("#edit-move-list-items").html("")
+    $("#edit-move-list-items").html("");
   }
-  if(moveToChange.numberOfInputFields > 0) {
-    $("#edit-input-fields-list").html("")
+  if (moveToChange.numberOfInputFields > 0) {
+    $("#edit-input-fields-list").html("");
     for (let i = 0; i < moveToChange.numberOfInputFields; i++) {
-      $("#edit-input-fields-list").append(`<li><input type="text"></li>`)
+      $("#edit-input-fields-list").append(`<li><input type="text"></li>`);
     }
   } else {
-    $("#edit-input-fields-list").html("")
+    $("#edit-input-fields-list").html("");
   }
-  
-}
+};
 
 const renderMoves = (data) => {
   let isGameMaster =
@@ -538,7 +532,7 @@ const renderMoves = (data) => {
   $("#move-output").html("");
   data.forEach((move, index) => {
     let checked = move.checkedQuantity ?? 0;
-    checked = move.checkedQuantity
+    checked = move.checkedQuantity;
     if (move.activated) {
       let attribute = move.attribute ?? "";
       let activatedText = move.activated
@@ -583,7 +577,6 @@ const renderMoves = (data) => {
       <button type="button" class="btn playgroup-button change-button-${index}" id="${move.moveNumber}">Ändra</button>
       </div>`);
         $(".button-" + index).click(function (e) {
-        
           let character = JSON.parse(sessionStorage.getItem("character"));
           let characterNumber = character.characterNumber;
           axios
@@ -601,73 +594,81 @@ const renderMoves = (data) => {
               }
             });
         });
-        $(".change-button-" +index).click(function (e){
-          sessionStorage.setItem("moveNumber", e.target.id)
+        $(".change-button-" + index).click(function (e) {
+          sessionStorage.setItem("moveNumber", e.target.id);
           $("#edit-move-group").hide();
           $("#edit-activated-group").hide();
-          axios.get(getOneMove+e.target.id)
-          .then(response => {
-            sessionStorage.setItem("moveToChange", JSON.stringify(response.data))
-            $("#edit-move-name-text").text(response.data.name)
-            $("#edit-move-name").val(response.data.name)
-            $("#edit-move-attribute-text").text(response.data.attribute)
-            $("#edit-move-attribute").val(response.data.attribute)
-            if(response.data.numberOfCheckboxes>0) {
-              $("#edit-move-checkboxes").val(""+response.data.numberOfCheckboxes)
-            } else {
-              $("#edit-move-checkboxes").val("0")
-            }
-            if(response.data.numberOfInputFields>0) {
-              $("#edit-move-inputfields").val(""+response.data.numberOfInputFields)
-            } else {
-              $("#edit-move-inputfields").val("0")
-            }
-            addListenersToEdit();
-           
-          })
-          .then(()=> {
-            renderEditMoves()
-          })
+          axios
+            .get(getOneMove + e.target.id)
+            .then((response) => {
+              sessionStorage.setItem(
+                "moveToChange",
+                JSON.stringify(response.data)
+              );
+              $("#edit-move-name-text").text(response.data.name);
+              $("#edit-move-name").val(response.data.name);
+              $("#edit-move-attribute-text").text(response.data.attribute);
+              $("#edit-move-attribute").val(response.data.attribute);
+              if (response.data.numberOfCheckboxes > 0) {
+                $("#edit-move-checkboxes").val(
+                  "" + response.data.numberOfCheckboxes
+                );
+              } else {
+                $("#edit-move-checkboxes").val("0");
+              }
+              if (response.data.numberOfInputFields > 0) {
+                $("#edit-move-inputfields").val(
+                  "" + response.data.numberOfInputFields
+                );
+              } else {
+                $("#edit-move-inputfields").val("0");
+              }
+              addListenersToEdit();
+            })
+            .then(() => {
+              renderEditMoves();
+            });
           $("#editMoveModal").modal("show");
-        })
+        });
       }
 
       for (let i = 0; i < move.numberOfCheckboxes; i++) {
-        
         $(`#number-of-checkboxes-${index}`).append(
           `<input class="checkbox-${i}" type="checkbox" name="checkbox-${
             i + 1
           }" id="checkbox-${index}-${i + 1}">`
         );
-        if((i+1)<=move.checkedQuantity) {
+        if (i + 1 <= move.checkedQuantity) {
           $(`#checkbox-${index}-${i + 1}`).prop("checked", true);
-        } 
-         $(`#checkbox-${index}-${i + 1}`).change(function (e) {
-          
-           if(this.checked) {
-             checked += 1;
-           } else {
-             checked -=1;
-           }
-           axios.post(editCheck + checked + "&moveNumber=" + move.moveNumber)
-           .then(resp => {
-             console.log(resp.data);
-           })
-           .catch(err => {
-             if(err.response) {
-               swal("Ett fel uppstod", err.response.data.message, "error")
-             } else {
-               console.log(err);
-             }
-           });
-         });
+        }
+        $(`#checkbox-${index}-${i + 1}`).change(function (e) {
+          if (this.checked) {
+            checked += 1;
+          } else {
+            checked -= 1;
+          }
+          axios
+            .post(editCheck + checked + "&moveNumber=" + move.moveNumber)
+            .then((resp) => {
+              console.log(resp.data);
+            })
+            .catch((err) => {
+              if (err.response) {
+                swal("Ett fel uppstod", err.response.data.message, "error");
+              } else {
+                console.log(err);
+              }
+            });
+        });
       }
-     
+
       for (let i = 0; i < move.numberOfInputFields; i++) {
         $(`#input-fields-list-${index}`).append(
           `<li>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" aria-label="Domänens Gud" aria-describedby="save-input-text-${i}" id="input-text-${i}" value="${move.inputText[i] ?? ""}">
+              <input type="text" class="form-control" aria-label="Domänens Gud" aria-describedby="save-input-text-${i}" id="input-text-${i}" value="${
+            move.inputText[i] ?? ""
+          }">
               <button class="btn playgroup-button save-text" type="button" id="${i}">Spara</button>
             </div>
         </li>`
@@ -675,23 +676,25 @@ const renderMoves = (data) => {
       }
       $(".save-text").click(function (e) {
         move.inputText[e.target.id] = $("#input-text-" + e.target.id).val();
-        
 
-        axios.post(addMoveInputText + move.moveNumber + "&inputText=" + move.inputText)
-        .then(resp => {
-          swal(
-            "Sparat",
-            "Texten har lagts till i " + resp.data.name,
-            "success"
-          );
-        })
-        .catch(err => {
-          if(err.response) {
-            swal("Ett fel uppstod!", err.response.data.message, "error")
-          } else {
-            console.log(err);
-          }
-        })
+        axios
+          .post(
+            addMoveInputText + move.moveNumber + "&inputText=" + move.inputText
+          )
+          .then((resp) => {
+            swal(
+              "Sparat",
+              "Texten har lagts till i " + resp.data.name,
+              "success"
+            );
+          })
+          .catch((err) => {
+            if (err.response) {
+              swal("Ett fel uppstod!", err.response.data.message, "error");
+            } else {
+              console.log(err);
+            }
+          });
       });
       move.moveDescription.forEach((element) => {
         if (element.description) {
@@ -722,4 +725,4 @@ const renderMoves = (data) => {
       }
     }
   });
-}
+};
