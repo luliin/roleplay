@@ -270,12 +270,7 @@ const addListenersToEdit = () => {
     let newDescription = $("#edit-move-description").val();
     if(newDescription) {
       moveToChange.moveDescription.push({
-        "diceThrowText": null,
-        "description": newDescription,
-        "listItem": null,
-        "numberOfCheckboxes": null,
-        "inputText": null,
-        "numberOfInputFields": null,
+        description: newDescription,
         priorityOrder : (moveToChange.moveDescription.length +1)
       })
     }
@@ -495,6 +490,7 @@ const renderEditMoves = () => {
   }
   $("#update-new-move").click(function () {
     console.log("Klick");
+    console.log(moveToChange);
     if(moveToChange) {
       axios.post(updateMove + moveToChange.moveNumber, moveToChange)
       .then(response => {
