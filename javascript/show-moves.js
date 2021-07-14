@@ -12,6 +12,7 @@ $(function () {
       showButton.text("Visa alla");
     }
   });
+  addListenerToUpdateMove();
 });
 
 const renderMovesPage = () => {
@@ -27,6 +28,45 @@ const renderMovesPage = () => {
       swal("Ett fel uppstod!", "" + error.data.message, "error");
     });
 };
+
+const addListenerToUpdateMove = () => [
+  $("#update-new-move").click(function () {
+    console.log("Klick");
+    console.log(moveToChange);
+    if (moveToChange) {
+      axios
+        .post(updateMove + moveToChange.moveNumber, moveToChange)
+        .then((response) => {
+          sessionStorage.setItem("moveToChange", JSON.stringify(response.data));
+          swal(
+            "Manöver uppdaterad!",
+            response.data.name + " har uppdaterats!",
+            "success"
+          ).then(() => {
+            if ($("#show-all").text() == "Visa alla") {
+              renderMovesPage();
+            } else {
+              renderAllMovesPage();
+            }
+            $("#editMoveModal").modal("hide");
+          });
+        })
+        .catch((error) => {
+          if (error.response) {
+            swal("Ett fel uppstod", error.response.data.message, "error");
+          } else {
+            console.log(error);
+          }
+        });
+    } else {
+      swal(
+        "Inga ändringar gjorda!",
+        "Du har inte gjort några ändringar på manövern. Gör några och försök igen.",
+        "error"
+      );
+    }
+  }),
+];
 
 const renderAllMovesPage = () => {
   axios
@@ -488,35 +528,7 @@ const renderEditMoves = () => {
   } else {
     $("#edit-input-fields-list").html("")
   }
-  $("#update-new-move").click(function () {
-    console.log("Klick");
-    console.log(moveToChange);
-    if(moveToChange) {
-      axios.post(updateMove + moveToChange.moveNumber, moveToChange)
-      .then(response => {
-        sessionStorage.setItem("moveToChange", JSON.stringify(response.data))
-        swal("Manöver uppdaterad!", response.data.name + " har uppdaterats!", "success")
-        .then(()=> {
-          if($("#show-all").text() == "Visa alla") {
-            renderMovesPage();
-          } else {
-            renderAllMovesPage();
-          }
-            $("#editMoveModal").modal("hide");
-        })
-      })
-      .catch(error => {
-        if(error.response) {
-          swal("Ett fel uppstod", error.response.data.message, "error")
-        } else {
-          console.log(error);
-        }
-      })
-      
-    } else {
-      swal("Inga ändringar gjorda!", "Du har inte gjort några ändringar på manövern. Gör några och försök igen.", "error")
-    }
-  })
+  
 }
 
 const renderMoves = (data) => {
