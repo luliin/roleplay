@@ -275,9 +275,7 @@
       <!-- Tab 2 -->
       <div class="tab-pane fade" id="moves" role="tabpanel" aria-labelledby="moves-tab">
         <div class="row justify-content-center text-center">
-          <button type="button" class="col-5 btn playgroup-button mt-3" id="show-all">
-            Visa alla
-          </button>
+          <button type="button" class="col-5 btn playgroup-button mt-3" id="show-all">Visa alla</button>
           <h1 class="my-3">Manövrar</h1>
 
           <div class="col text-start" id="move-output">
@@ -1088,7 +1086,7 @@
 
   <!-- Edit move modal -->
   <div class="modal fade" id="editMoveModal" tabindex="-1" aria-labelledby="editMoveModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
       <div class="modal-content">
         <div class="modal-header bg-dark">
           <h5 class="modal-title" id="loginLabel">Ändra manöver</h5>
@@ -1097,17 +1095,17 @@
         <div class="modal-body" id="loginBody">
           <div class="container my-3">
             <div class="col-12 text-start mt-5">
-              <div class="card  mb-3 bg-dark text-success playgroup mb-5" id="edit-move-output">
-                <form class="row g-3 light ">
-                  <div class="col-12 col-lg-3">
+              <div class="card  mb-3 text-success playgroup mb-5" id="edit-move-output" style="background:#7ea49d">
+                <form class="row g-3 text-dark ">
+                  <div class="col-12 col-lg-6">
                     <label for="edit-move-name" class="form-label">Namn</label>
                     <div class="input-group">
       
                       <input class="form-control" aria-label="With textarea" id="edit-move-name">
-                      <button type="button" class="btn playgroup-button light" id="change-move-name">Ändra</button>
+                      <button type="button" class="btn playgroup-button dark-playgroup-button" id="change-move-name">Ändra</button>
                     </div>
                   </div>
-                  <div class="col-12 col-lg-3">
+                  <div class="col-12 col-lg-6">
                     <label for="move-attribute" class="form-label">Attribut</label>
                     <div class="input-group">
       
@@ -1120,7 +1118,7 @@
                         <option value="(VIS)">Visom</option>
                         <option value="(KAR)">Karisma</option>
                       </select>
-                      <button type="button" class="btn playgroup-button light" id="change-move-attribute">Ändra</button>
+                      <button type="button" class="btn playgroup-button dark-playgroup-button" id="change-move-attribute">Ändra</button>
                     </div>
       
                   </div>
@@ -1131,7 +1129,7 @@
                       <option value="0">Nej</option>
                     </select>
                   </div>
-                  <div class="col-6 col-lg-3">
+                  <div class="col-6 col-lg-5">
                     <label for="edit-move-checkboxes" class="form-label">Antal checkboxar</label>
                     <select id="edit-move-checkboxes" class="form-select">
                       <option selected="" value="0">0</option>
@@ -1147,41 +1145,7 @@
                       <option value="10">10</option>
                     </select>
                   </div>
-                  <div class="col-12 col-lg-3">
-                    <label for="move-description" class="form-label">Beskrivning</label>
-                    <div class="input-group">
-      
-                      <textarea class="form-control" aria-label="With textarea" id="edit-move-description"></textarea>
-                      <button type="button" class="btn playgroup-button light p-0 px-1" id="remove-description" style="max-width: 50px;">Töm</button>
-
-                      <button type="button" class="btn playgroup-button light p-0 px-2" id="change-description">Lägg till</button>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg-3">
-                    <label for="move-list-item" class="form-label">Ändra lista</label>
-                    <div class="input-group">
-      
-                      <input class="form-control" aria-label="With textarea" id="edit-list-item">
-                      <button type="button" class="btn playgroup-button light p-0 px-1" id="remove-list-item" style="max-width: 50px;">Töm</button>
-
-                      <button type="button" class="btn playgroup-button light p-0 px-2" id="change-list-item">Lägg till</button>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg-3">
-                    <label for="move-dice-throw-text" class="form-label">Tärningstext</label>
-                    <div class="input-group">
-                      <select name="edit-dice-value" id="edit-dice-value" class="form-select" style="max-width:78px">
-                        <option selected="" value="10+" class="">10+</option>
-                        <option value="7-9">7-9</option>
-                        <option value="6-">6-</option>
-                      </select>
-                      <input class="form-control" aria-label="With textarea" id="edit-dice-throw-text">
-                      <button type="button" class="btn playgroup-button light p-0 px-1" id="remove-dice-throw-text" style="max-width: 50px;">Töm</button>
-                      <button type="button" class="btn playgroup-button light p-0 px-2" id="change-dice-throw-text">Lägg till</button>
-                    </div>
-      
-                  </div>
-                  <div class="col-6 col-lg-3">
+                  <div class="col-6 col-lg-4">
                     <label for="edit-move-inputfields" class="form-label">Antal inputfält</label>
                     <select id="edit-move-inputfields" class="form-select">
                       <option selected value="0">0</option>
@@ -1197,24 +1161,59 @@
                       <option value="10">10</option>
                     </select>
                   </div>
+                  <div class="col-12">
+                    <label for="move-description" class="form-label">Beskrivning</label>
+                    <div class="input-group">
+      
+                      <textarea class="form-control" aria-label="With textarea" id="edit-move-description"></textarea>
+                      <button type="button" class="btn playgroup-button dark-playgroup-button p-0 px-1" id="remove-description" style="max-width: 50px;">Töm</button>
+
+                      <button type="button" class="btn playgroup-button dark-playgroup-button p-0 px-2" id="change-description">Lägg till</button>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label for="move-list-item" class="form-label">Ändra lista</label>
+                    <div class="input-group">
+      
+                      <input class="form-control" aria-label="With textarea" id="edit-list-item">
+                      <button type="button" class="btn playgroup-button dark-playgroup-button p-0 px-1" id="remove-list-item" style="max-width: 50px;">Töm</button>
+
+                      <button type="button" class="btn playgroup-button dark-playgroup-button p-0 px-2" id="change-list-item">Lägg till</button>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label for="move-dice-throw-text" class="form-label">Tärningstext</label>
+                    <div class="input-group">
+                      <select name="edit-dice-value" id="edit-dice-value" class="form-select" style="max-width:78px">
+                        <option selected="" value="10+" class="">10+</option>
+                        <option value="7-9">7-9</option>
+                        <option value="6-">6-</option>
+                      </select>
+                      <input class="form-control" aria-label="With textarea" id="edit-dice-throw-text">
+                      <button type="button" class="btn playgroup-button dark-playgroup-button p-0 px-1" id="remove-dice-throw-text" style="max-width: 50px;">Töm</button>
+                      <button type="button" class="btn playgroup-button dark-playgroup-button p-0 px-2" id="change-dice-throw-text">Lägg till</button>
+                    </div>
+      
+                  </div>
+                  
                 </form>
-                <div class="mt-3 card-header bg-transparent playgroup text-center">
-                  <h5 class="m-0 light">
-                    <span id="edit-move-name-text" class="info"></span>
+                <div class="mt-3 card-header bg-transparent playgroup text-center text-dark">
+                  <h5 class="m-0 ">
+                    <span id="edit-move-name-text" ></span>
                     
-                    <span id="edit-move-attribute-text" class="info"></span>
-                    <span id="edit-move-activated-text" class="info"></span>
+                    <span id="edit-move-attribute-text" ></span>
+                    <span id="edit-move-activated-text" ></span>
                   
                   </h5>
                 </div>
-                <div class="card-body text-success">
+                <div class="card-body text-dark">
                   <div class="text-center" id="edit-number-of-checkboxes">
                   </div>
-                  <h6 class="card-title light small mt-2">
+                  <h6 class="card-title  small mt-2">
                     <small id="edit-move-primary-description"></small>
                   </h6>
                 </div>
-                <div class="card-footer bg-transparent playgroup light">
+                <div class="card-footer bg-transparent text-dark">
   
   
                   <ul class="text-start small list-unstyled ms-3" id="edit-move-dice-throw-text-list">
@@ -1237,11 +1236,9 @@
           </div>
         </div>
         <div class="modal-footer text-center" id="loginFooter">
-          <div class="col">
-            
-          </div>
+          
           <div class="col text-center">
-            <button type="button" class="btn btn-dark" id="get-new-move">
+            <button type="button" class="btn btn-dark" id="update-new-move">
               Spara ändringar
             </button>
           </div>
