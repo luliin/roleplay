@@ -37,7 +37,7 @@ const loadCharacters = (characters) => {
             
           </div>
           <div class="card-footer bg-transparent playgroup">
-            <button class="btn btn-outline-light playgroup-button character-button" id="${character.characterNumber}" style="width: 100%">
+            <button class="btn playgroup-button character-button" id="${character.characterNumber}" style="width: 100%">
               Välj
             </button>
           </div>
