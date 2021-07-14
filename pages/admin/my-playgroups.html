@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sköna Rollspelsgänget - Mitt konto</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="../../styles/styling.css" />
-</head>
+  </head>
 
-<body class="bg-dark">
+  <body class="bg-dark">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="../../index.html">Sköna Rollspelsgänget</a>
+        <a class="navbar-brand" href="../../index.html"
+          >Sköna Rollspelsgänget</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -31,11 +36,23 @@
           class="collapse navbar-collapse d-lg-flex justify-content-lg-end"
           id="navbarTogglerDemo02"
         >
-          <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0 ">
-            <li class="nav-item text-end mt-3 my-lg-0 pt-lg-2" id="myAccount"></li>
-            <li class="nav-item text-end my-0 my-lg-0 pt-lg-2" id="myPlaygroups"></li>
-            <li class="nav-item text-end my-0 my-lg-0 pt-lg-2" id="myCharacters"></li>
-            <li class="nav-item text-end my-0 my-lg-0 pt-lg-2" id="gameMasterPage"></li>
+          <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0">
+            <li
+              class="nav-item text-end mt-3 my-lg-0 pt-lg-2"
+              id="myAccount"
+            ></li>
+            <li
+              class="nav-item text-end my-0 my-lg-0 pt-lg-2"
+              id="myPlaygroups"
+            ></li>
+            <li
+              class="nav-item text-end my-0 my-lg-0 pt-lg-2"
+              id="myCharacters"
+            ></li>
+            <li
+              class="nav-item text-end my-0 my-lg-0 pt-lg-2"
+              id="gameMasterPage"
+            ></li>
             <li class="nav-item text-end" id="navigation-menu">
               <button
                 class="nav-item btn btn-outline-dark"
@@ -59,110 +76,106 @@
 
     <!-- Main page -->
     <div class="container text-center pb-5" id="playgroup-container">
-        <h1 class="my-5">Mina spelgrupper</h1>
+      <h1 class="my-5">Mina spelgrupper</h1>
 
-        <div class="row justify-content-center row-cols-1 row-cols-lg-3" id="playgroup-output">
-            <div class="col">
-            <div class=" card  mb-3 bg-dark text-success playgroup mb-5" style="max-width: 18rem;">
-                <div class="card-header bg-transparent playgroup"></div>
-                <div class="card-body text-success">
-                    <h5 class="card-title light"></h5>
-                    <p class="card-text playgroup">Spelledare: <span class="light"></span></p>
-                </div>
-                <div class="card-footer bg-transparent playgroup">
-                    <button class="btn btn-outline-light playgroup-button" id="" style="width: 100%">
-                        Välj
-                    </button>
-
-                </div>
-            </div>
-        </div>
-
-            <div class="card  mb-3 bg-dark text-success playgroup mb-5" style="max-width: 18rem;">
-                <div class="card-header bg-transparent playgroup"></div>
-                <div class="card-body text-success">
-                    <h5 class="card-title light"></h5>
-                    <p class="card-text playgroup">Spelledare: <span class="light"></span></p>
-                </div>
-                <div class="card-footer bg-transparent playgroup">
-                    <button class="btn btn-outline-light playgroup-button" id="" style="width: 100%">
-                        Välj
-                    </button>
-
-                </div>
-            </div>
-        </div>
-
-
-
-
+      <div
+        class="row justify-content-center row-cols-1 row-cols-lg-3"
+        id="playgroup-output"
+      ></div>
     </div>
-    </div>
+
     <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-dark">
-                    <h5 class="modal-title" id="loginLabel">Logga in</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="loginBody">
-                    <div class="container my-5">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="sign-in-email"
-                                placeholder="name@example.com" />
-                            <label for="sign-in-email">E-post</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="password" class="form-control" id="sign-in-password" placeholder="Password" />
-                            <label for="sign-in-password">Lösenord</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer text-center" id="loginFooter">
-                    <div class="col">
-                        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
-                            Nytt konto
-                        </button>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-dark" id="validate-sign-in">
-                            Logga in
-                        </button>
-                    </div>
-                </div>
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-dark">
+            <h5 class="modal-title" id="loginLabel">Logga in</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="loginBody">
+            <div class="container my-5">
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="sign-in-email"
+                  placeholder="name@example.com"
+                />
+                <label for="sign-in-email">E-post</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="sign-in-password"
+                  placeholder="Password"
+                />
+                <label for="sign-in-password">Lösenord</label>
+              </div>
             </div>
+          </div>
+          <div class="modal-footer text-center" id="loginFooter">
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-dark"
+                data-bs-dismiss="modal"
+              >
+                Nytt konto
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-dark" id="validate-sign-in">
+                Logga in
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Footer -->
 
     <footer class="text-center text-lg-start">
-        <!-- Copyright -->
-        <div class="text-center text-dark lead p-3 fw-bold" style="background-color: rgba(0, 0, 0, 0.2)">
-            ©
-            <script>
-                document.write(new Date().getFullYear());
-            </script>
-            -
-            <a class="text-dark lead" href="https://github.com/luliin">Julia Wigenstedt</a>
-        </div>
-        <!-- Copyright -->
+      <!-- Copyright -->
+      <div
+        class="text-center text-dark lead p-3 fw-bold"
+        style="background-color: rgba(0, 0, 0, 0.2)"
+      >
+        ©
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        -
+        <a class="text-dark lead" href="https://github.com/luliin"
+          >Julia Wigenstedt</a
+        >
+      </div>
+      <!-- Copyright -->
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-        crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script src="../../javascript/api-endpoints.js"></script>
     <script src="../../javascript/restrict-access.js"></script>
     <script src="../../javascript/home.js"></script>
     <script src="../../javascript/gamemasters-playgroups.js"></script>
-
-
-</body>
-
+  </body>
 </html>
