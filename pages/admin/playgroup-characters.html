@@ -77,6 +77,12 @@
         </button>
       </li>
       <li class="nav-item" role="presentation">
+        <button class="nav-link" id="moves-tab" data-bs-toggle="pill" data-bs-target="#standard-moves" type="button" role="tab"
+          aria-controls="standard-moves" aria-selected="false">
+          Standardmanövrar
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
         <button class="nav-link" id="gear-tab" data-bs-toggle="pill" data-bs-target="#gear" type="button" role="tab"
           aria-controls="gear" aria-selected="false">
           Utrustning
@@ -274,6 +280,53 @@
           </div>
         </div>
       </div>
+      <!-- Tab 2 -->
+        <div
+          class="tab-pane fade"
+          id="standard-moves"
+          role="tabpanel"
+          aria-labelledby="moves-tab"
+        >
+          <div class="row justify-content-center text-center">
+            
+            <h1 class="my-3">Standardmanövrar</h1>
+
+            <div class="col text-start" id="standard-move-output">
+              <!-- <div class="card mx-4 mb-3 bg-dark text-success playgroup mb-5">
+                <div class="card-header bg-transparent playgroup text-center">
+                  <h5 class="m-0 light" id="move-name">
+                    Eld... själ! <span id="move-attribute">(FYS)</span>
+                  </h5>
+                </div>
+                <div class="card-body text-success">
+                  <h6 class="card-title light small">
+                    <small
+                      >När du frammanar ett vapen av ren eld, beskriv dess form
+                      och slå +FYS. Vapnet börjar alltid med taggarna eldigt,
+                      hand och farligt. På 10+, välj ytterligare två taggar. På
+                      7-9, välj ytterligare en tag.</small
+                    >
+                  </h6>
+                </div>
+                <div class="card-footer bg-transparent playgroup light">
+                  <ul class="text-start small">
+                    <li class="small">Nära</li>
+                    <li class="small">Räckvidd</li>
+                    <li class="small">Kastad</li>
+                    <li class="small">Fördel på skadeslag</li>
+                    <li class="small">Ta bort taggen ’farlig’</li>
+                  </ul>
+                  <h6 class="small">
+                    <small>
+                      På 6-, så får du ditt vapen men det får taggen hungrig.
+                      Mata det, eller möt konsekvenserna</small
+                    >
+                  </h6>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
       <!-- Tab 2 -->
       <div class="tab-pane fade" id="moves" role="tabpanel" aria-labelledby="moves-tab">
         <div class="row justify-content-center text-center">
@@ -1271,6 +1324,7 @@
   <script src="../../javascript/create-move.js"></script>
   <script src="../../javascript/update-character.js"></script>
   <script src="../../javascript/create-npc.js"></script>
+  <script src="../../javascript/show-standard-moves.js"></script>
 </body>
 
 </html>
