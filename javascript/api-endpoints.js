@@ -76,3 +76,5 @@ let removeNPC = startUrl + "/api/v1/playgroups/delete-npc?name="
 let getOneMove = startUrl + "/api/v1/moves/get?moveNumber="
 
 let updateMove = startUrl + "/api/v1/moves/update?moveNumber="
+
+const standardMoves = startUrl + "/api/v1/standard";
