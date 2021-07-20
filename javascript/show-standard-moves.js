@@ -41,43 +41,43 @@ const renderStandardMoves = (data) => {
                 <div class="text-center" id="number-of-checkboxes-${index}">
                  </div>
                   <h6 class="card-title light small">
-                    <small id="description-${index}"
+                    <small id="s-description-${index}"
                       ></small
                     >
                   </h6>
                 </div>
                 <div class="card-footer bg-transparent playgroup light" id="button-${index}">
-                    <ul class="text-start small list-unstyled ms-3" id="dice-text-${index}">
+                    <ul class="text-start small list-unstyled ms-3" id="s-dice-text-${index}">
                     </ul>
-                    <ul class="text-start small" id="list-item-${index}">
+                    <ul class="text-start small" id="s-list-item-${index}">
                     </ul>
-                    <ul class="text-start small list-unstyled ms-3" id="other-description-${index}">
+                    <ul class="text-start small list-unstyled ms-3" id="s-other-description-${index}">
                     </ul>
                 </div>
               </div>`
         );
 
         if(descriptionList.length>0) {
-            $("#description-" + index).html(descriptionList[0].description.replaceAll("\n", "<br>"))
+            $("#s-description-" + index).html(descriptionList[0].description.replaceAll("\n", "<br>"))
             for(let i=1; i<descriptionList.length; i++) {
-                $("#other-description-"+ index).append(`<li class="small">${descriptionList[i].description}</li>`
+                $("#s-other-description-"+ index).append(`<li class="small">${descriptionList[i].description}</li>`
                 );
             }
         }
 
         if(diceThrowList.length>0) {
-            $("#dice-text-" +index).html("");
+            $("#s-dice-text-" +index).html("");
             for (let i = 0; i < diceThrowList.length; i++) {
-              $("#dice-text-" + index).append(
+              $("#s-dice-text-" + index).append(
                 `<li class="small"><small>${diceThrowList[i].diceThrowText}</small></li>`
               );
             }
         }
 
         if (listItemList.length > 0) {
-          $("#list-item-" + index).html("");
+          $("#s-list-item-" + index).html("");
           for (let i = 0; i < listItemList.length; i++) {
-            $("#list-item-" + index).append(
+            $("#s-list-item-" + index).append(
               `<li class="small"><small>${listItemList[i].listItem}</small></li>`
             );
           }
