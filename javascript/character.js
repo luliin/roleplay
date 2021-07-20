@@ -132,7 +132,7 @@ const loadAboutPage = (currentCharacter) => {
   if (currentCharacter.race) {
     $("#race-character").html(`${currentCharacter.race}`);
   } else {
-    $("#origin-character").html("Ej angett");
+    $("#race-character").html("Ej angett");
   }
   if (currentCharacter.origin) {
     $("#origin-character").html(`${currentCharacter.origin}`);
