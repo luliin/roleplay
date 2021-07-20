@@ -29,6 +29,7 @@ const loadAllCharactersPage = () => {
       sessionStorage.setItem("character", JSON.stringify(character));
       sessionStorage.setItem("characterNumber", character.characterNumber);
       checkAvaliability();
+      loadEditPage();
       $("#attributes-tab").tab("show");
       renderMovesPage();
     });
