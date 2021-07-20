@@ -38,7 +38,7 @@ const renderStandardMoves = (data) => {
                   </h5>
                 </div>
                 <div class="card-body text-success">
-                <div class="text-center" id="number-of-checkboxes-${index}">
+                <div class="text-center" id="s-number-of-checkboxes-${index}">
                  </div>
                   <h6 class="card-title light small">
                     <small id="s-description-${index}"
@@ -46,7 +46,7 @@ const renderStandardMoves = (data) => {
                     >
                   </h6>
                 </div>
-                <div class="card-footer bg-transparent playgroup light" id="button-${index}">
+                <div class="card-footer bg-transparent playgroup light" id="s-button-${index}">
                     <ul class="text-start small list-unstyled ms-3" id="s-dice-text-${index}">
                     </ul>
                     <ul class="text-start small" id="s-list-item-${index}">
