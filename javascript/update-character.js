@@ -24,8 +24,6 @@ let inputMaxHP = $("#edit-char-maxHP");
 let changeMaxHP = $("#change-char-maxHP");
 let inputArmor = $("#edit-char-armor");
 let changeCurrentArmor = $("#change-char-armor");
-let inputCarryingCapacity = $("#edit-char-carryingCapacity");
-let changeCarryingCapacity = $("#change-char-carryingCapacity");
 let selectSavedLevel = $("#edit-char-savedLevel");
 let changeSavedLevel = $("#change-char-savedLevel");
 let selectMaxAttribute = $("#edit-char-maxAttribute");
@@ -147,14 +145,7 @@ $(function(){
         swal("Ogiltig rustning!", "Du måste ange rustning", "error");
       }
     });
-    changeCarryingCapacity.click(function () {
-      let carryingCapacity = inputCarryingCapacity.val();
-      if (carryingCapacity) {
-        updateCurrentCharacter("carryingCapacity", carryingCapacity);
-      } else {
-        swal("Ogiltig maxlast!", "Du måste ange maxlast", "error");
-      }
-    });
+    
     changeSavedLevel.click(function() {
         let savedLevel = +selectSavedLevel.val()
         updateCurrentCharacter("savedLevel", savedLevel);
@@ -185,7 +176,6 @@ const loadPage = () => {
     inputDamage.val(character.damage)
     inputMaxHP.val(character.maxHP)
     inputArmor.val(character.armor)
-    inputCarryingCapacity.val(character.carryingCapacity)
     if (!character.savedLevel) {
         selectSavedLevel.val("0");
     } else {
