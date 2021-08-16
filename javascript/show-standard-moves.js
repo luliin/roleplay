@@ -14,6 +14,7 @@ const renderStandardMoves = (data) => {
     $("#standard-move-output").html("")
 
     data.forEach((move, index) => {
+console.log(move);
 
         let descriptionList = move.moveDescription.filter(element => {
             if(element.description) {
