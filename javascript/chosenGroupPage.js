@@ -87,7 +87,7 @@ const loadGroupPage = (data) => {
   });
   data.playerCharacters.forEach((character) => {
     let player = data.players.find((person) =>
-      person.characters.find((char) => (char.name = character.name))
+      person.characters.find((char) => char.name == character.name)
     );
     if (!player) {
       player = { firstName: "Okänd" };
