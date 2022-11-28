@@ -2,7 +2,7 @@
 // const startUrl = "http://localhost:8080";
 
 // for heruko
-const startUrl = "https://rollspel.herokuapp.com";
+const startUrl = "https://trakorien.up.railway.app/";
 
 let validateLogin = `${startUrl}/api/v1/users/validate/`;
 let getStepsOfUser = `${startUrl}/api/v1/users/get/one?email=`;
